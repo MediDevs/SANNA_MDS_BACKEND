@@ -1295,7 +1295,7 @@ namespace MDS.Api.Controllers
         }
 
         [HttpPut, Route("UpdateHistoriaClinicaMadEstado")]
-        public async Task<IActionResult> UpdateHistoriaClinicaMadEstado(SPRMDS_UPDATE_HISTORIA_CLINICA_AUDITORIA_ESTADOViewModel model)
+        public async Task<IActionResult> UpdateHistoriaClinicaMadEstado(UpdateHistoriaClinicaAuditoriaEstado model)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelStateExtensions.GetErrorMessage(ModelState));

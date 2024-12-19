@@ -390,7 +390,6 @@ namespace MDS.Api.Models
     }
 
 
-
     #region "Estado 0 - 2 - 3"
     public class AddHistoriaClinicaMadAuditoriaEstadoViewModel
     {
@@ -401,7 +400,7 @@ namespace MDS.Api.Models
         public string CAMBIO { get; set; }
         public int USUARIO_CREACION { get; set; }
     }
-    public class SPRMDS_UPDATE_HISTORIA_CLINICA_AUDITORIA_ESTADOViewModel
+    public class UpdateHistoriaClinicaAuditoriaEstado
     {
         public int @CHIS_ID { get; set; }
         public int @CMED_ID { get; set; }
