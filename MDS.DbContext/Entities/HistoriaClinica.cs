@@ -2168,4 +2168,44 @@ namespace MDS.DbContext.Entities
         public string CONDUCTOR { get; set; }
     }
     #endregion
+    
+    public class HistoriaClinicaMadConfirmarLlegadaMedico
+    {
+        public int CHIS_ID { get; set; }
+        public string SHIS_CM_ESTADO { get; set; }
+        public int NHIS_CLASIFICACION_PAC { get; set; }
+        public string PACIENTE { get; set; }
+        public string DISTRITO { get; set; }
+        public string DIRECCION { get; set; }
+        public string MEDICO { get; set; }
+    }
+
+    public class HistoriaClinicaMadEstado7
+    {
+        public int CMCH_ID { get; set; }
+        public string CONDUCTOR { get; set; }
+        public string FMCH_ANULADA { get; set; }
+        public string DMCH_FEC_INI_ASIG { get; set; }
+        public string DMCH_HOR_INI_ASIG { get; set; }
+        public string DMCH_FEC_FIN_ASIG { get; set; }
+        public string DMCH_HOR_FIN_ASIG { get; set; }
+    }
+
+    public class HistoriaClinicaMadFinConsultaMedica
+    {
+        public string HORA { get; set; }
+        public int CHIS_ID { get; set; }
+        public string SHIS_CM_ESTADO { get; set; }
+        public int NHIS_COD_ESTADO { get; set; }
+        public int NHIS_CLASIFICACION_PAC { get; set; }
+        public string DHIS_FECOPLLA_ATE { get; set; }
+        public string DHIS_FEC_ATE { get; set; }
+        public int NHIS_CONTADOR_PERIODO { get; set; }
+        public string PACIENTE { get; set; }
+        public string DISTRITO { get; set; }
+        public string DIRECCION { get; set; }
+        public string MEDICO { get; set; }
+        public string CONDUCTOR { get; set; }
+    }
+
 }

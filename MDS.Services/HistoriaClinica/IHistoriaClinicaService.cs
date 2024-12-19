@@ -175,6 +175,52 @@ namespace MDS.Services.HistoriaClinica
         Task<ServiceResponse> UpdateHistoriaClinicaAuditoriaEstadoRecepcionMensaje(UpdateHistoriaClinicaAuditoriaEstadoRecepcionMensajeDto dto);
 
         #endregion
+
+        //ESTADO 6 - 7
+        //By Henrry Torres
+        //6 - 7 (API 1)
+        Task<ServiceResponse> GetHistoriaClinicaMadConfirmarLlegadaMedico(int codigoHistoria);
+
+        //By Henrry Torres
+        //6 - 7 (API 2)
+        Task<ServiceResponse> GetHistoriaClinicaMadEstado7(int codigoMedico, DateTime fechaLlegada, DateTime horaLlegada);
+
+        //By Henrry Torres
+        //6 - 7 (API 3)
+        Task<ServiceResponse> AddHistoriaClinicaMadAuditoriaConfirmarLlegadaMedico(HistoriaClinicaMadAuditoriaEstadoDto dto);
+
+        //By Henrry Torres
+        //6 - 7 (API 4)
+        Task<ServiceResponse> UpdateHistoriaClinicaMadAuditoriaConfirmarLlegadaMedico(HistoriaClinicaMadAuditoriaEstadoDto dto);
+
+        //ESTADO 7 - 8
+        //By Henrry Torres
+        //7 - 8 (API 1)
+        Task<ServiceResponse> GetHistoriaClinicaMadFinConsultaMedica(int codigoHistoria, int codigoPaciente, int codigoDireccion);
+
+        //By Henrry Torres
+        //7 - 8 (API 2)
+        Task<ServiceResponse> UpdateHistoriaClinicaEstadoMadFinConsultaMedica(HistoriaClinicaMadAuditoriaEstadoFinConsultaDto dto);
+
+        //By Henrry Torres
+        //7 - 8 (API 3)
+        Task<ServiceResponse> UpdateHistoriaClinicaOtrosServiciosFinConsultaMedica(HistoriaClinicaMadAuditoriaEstadoFinConsultaDto dto);
+
+        //7 - 8 (API 4)
+        //Aun esta en análisis
+
+        //By Henrry Torres
+        //7 - 8 (API 5)
+        Task<ServiceResponse> DeleteHistoriaClinicaOtrosServiciosFinConsultaMedica(HistoriaClinicaMadAuditoriaEstadoFinConsultaDto dto);
+
+        //By Henrry Torres
+        //7 - 8 (API 6)
+        Task<ServiceResponse> AddHistoriaClinicaMadEstadoFinConsultaMedica(HistoriaClinicaEstadoFinConsultaDto dto);
+
+        //By Henrry Torres
+        //7 - 8 (API 7)
+        Task<ServiceResponse> AddHistoriaClinicaMadAuditoriaEstadoFinConsultaMedica(HistoriaClinicaMadAuditoriaEstadoDto dto);
+
     }
 }
 

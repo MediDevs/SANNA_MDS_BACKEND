@@ -1453,5 +1453,228 @@ namespace MDS.Api.Controllers
         }
 
         #endregion
+
+
+        //ESTADO 6 - 7
+        //By Henrry Torres
+        //6 - 7 (API 1)
+        [HttpGet, Route("GetHistoriaClinica_Mad_Confirmar_Llegada_Medico")]
+        public async Task<IActionResult> GetHistoriaClinicaMadConfirmarLlegadaMedico(int codigoHistoria)
+        {
+            var response = await _historiaClinicaService.GetHistoriaClinicaMadConfirmarLlegadaMedico(codigoHistoria);
+
+            return ReturnFormattedResponse(response);
+        }
+
+        //6 - 7 (API 2)
+        [HttpGet, Route("GetHistoriaClinica_Mad_Estado_7")]
+        public async Task<IActionResult> GetHistoriaClinicaMadEstado7(int codigoMedico, DateTime fechaLlegada, DateTime horaLlegada)
+        {
+            var response = await _historiaClinicaService.GetHistoriaClinicaMadEstado7(codigoMedico, fechaLlegada, horaLlegada);
+
+            return ReturnFormattedResponse(response);
+        }
+
+        //6 - 7 (API 3)
+        [HttpPost, Route("AddHistoriaClinica_Mad_Auditoria_Confirmar_Llegada_Medico")]
+        public async Task<IActionResult> AddHistoriaClinicaMadAuditoriaConfirmarLlegadaMedico(AddHistoriaClinicaMadAuditoriaEstadoViewModel model)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelStateExtensions.GetErrorMessage(ModelState));
+
+            HistoriaClinicaMadAuditoriaEstadoDto dto = new HistoriaClinicaMadAuditoriaEstadoDto
+            {
+                ESTADO = model.ESTADO,
+                USUARIO_CREACION = model.USUARIO_CREACION,
+                CAMBIO = model.CAMBIO,
+                OBSERVACION = model.OBSERVACION,
+                NUMEROHISTORIA = model.NUMEROHISTORIA,
+                USUARIO = model.USUARIO
+            };
+
+            var response = await _historiaClinicaService.AddHistoriaClinicaMadAuditoriaConfirmarLlegadaMedico(dto);
+
+            return ReturnFormattedResponse(response);
+        }
+
+        //6 - 7 (API 4)
+        //By Henrry Torres
+        [HttpPut, Route("UpdateHistoriaClinica_Mad_Auditoria_Confirmar_Llegada_Medico")]
+        public async Task<IActionResult> UpdateHistoriaClinicaMadAuditoriaConfirmarLlegadaMedico(AddHistoriaClinicaMadAuditoriaEstadoViewModel model)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelStateExtensions.GetErrorMessage(ModelState));
+
+            HistoriaClinicaMadAuditoriaEstadoDto dto = new HistoriaClinicaMadAuditoriaEstadoDto
+            {
+                ESTADO = model.ESTADO,
+                USUARIO_CREACION = model.USUARIO_CREACION,
+                CAMBIO = model.CAMBIO,
+                OBSERVACION = model.OBSERVACION,
+                NUMEROHISTORIA = model.NUMEROHISTORIA,
+                USUARIO = model.USUARIO
+            };
+
+            var response = await _historiaClinicaService.UpdateHistoriaClinicaMadAuditoriaConfirmarLlegadaMedico(dto);
+
+            return ReturnFormattedResponse(response);
+        }
+
+        //ESTADO 7 - 8
+        //By Henrry Torres
+        //7 - 8 (API 1)
+        [HttpGet, Route("GetHistoriaClinica_Mad_Fin_Consulta_Medica")]
+        public async Task<IActionResult> GetHistoriaClinicaMadFinConsultaMedica(int codigoHistoria, int codigoPaciente, int codigoDireccion)
+        {
+            var response = await _historiaClinicaService.GetHistoriaClinicaMadFinConsultaMedica(codigoHistoria, codigoPaciente, codigoDireccion);
+
+            return ReturnFormattedResponse(response);
+        }
+
+        //7 - 8 (API 2)
+        //By Henrry Torres
+        [HttpPut, Route("UpdateHistoriaClinica_Estado_Mad_Fin_Consulta_Medica")]
+        public async Task<IActionResult> UpdateHistoriaClinicaEstadoMadFinConsultaMedica(HistoriaClinicaMadAuditoriaEstadoFinConsultaViewModel model)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelStateExtensions.GetErrorMessage(ModelState));
+
+            HistoriaClinicaMadAuditoriaEstadoFinConsultaDto dto = new HistoriaClinicaMadAuditoriaEstadoFinConsultaDto
+            {
+                NUMERO_HISTORIA = model.numero_historia,
+                FECDIA_ATE = model.fecdia_ate,
+                HORDIA_ATE = model.hordia_ate,
+                USUDIA_ATE = model.usudia_ate,
+                ACCIDE = model.accide,
+                ATENCION_REFERENCIAL = model.atencion_referencial
+            };
+
+            var response = await _historiaClinicaService.UpdateHistoriaClinicaEstadoMadFinConsultaMedica(dto);
+
+            return ReturnFormattedResponse(response);
+        }
+
+        //7 - 8 (API 3)
+        //By Henrry Torres
+        [HttpPut, Route("UpdateHistoriaClinica_Otros_Servicios_Fin_Consulta_Medica")]
+        public async Task<IActionResult> UpdateHistoriaClinicaOtrosServiciosFinConsultaMedica(HistoriaClinicaMadAuditoriaEstadoFinConsultaViewModel model)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelStateExtensions.GetErrorMessage(ModelState));
+
+            HistoriaClinicaMadAuditoriaEstadoFinConsultaDto dto = new HistoriaClinicaMadAuditoriaEstadoFinConsultaDto
+            {
+                NUMERO_HISTORIA = model.numero_historia,
+                FECOPLLA_ATE = model.fecoplla_ate,
+                HOROPLLA_ATE = model.horoplla_ate,
+                FECDIA_ATE = model.fecdia_ate,
+                HORDIA_ATE = model.hordia_ate,
+                USUDIA_ATE = model.usudia_ate,
+                ACCIDE = model.accide,
+                ATENCION_REFERENCIAL = model.atencion_referencial,
+            };
+
+            var response = await _historiaClinicaService.UpdateHistoriaClinicaOtrosServiciosFinConsultaMedica(dto);
+
+            return ReturnFormattedResponse(response);
+        }
+
+        //7 - 8 (API 4)
+        //Aun esta en análisis
+
+        //7 - 8 (API 5)
+        [HttpDelete, Route("DeleteHistoriaClinica_Otros_Servicios_Fin_Consulta_Medica")]
+        public async Task<IActionResult> DeleteHistoriaClinicaOtrosServiciosFinConsultaMedica(HistoriaClinicaMadAuditoriaEstadoFinConsultaViewModel model)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelStateExtensions.GetErrorMessage(ModelState));
+
+            HistoriaClinicaMadAuditoriaEstadoFinConsultaDto dto = new HistoriaClinicaMadAuditoriaEstadoFinConsultaDto
+            {
+                NUMERO_HISTORIA = model.numero_historia
+            };
+
+            var response = await _historiaClinicaService.DeleteHistoriaClinicaOtrosServiciosFinConsultaMedica(dto);
+
+            return ReturnFormattedResponse(response);
+        }
+
+        //7 - 8 (API 6)
+        [HttpPost, Route("AddHistoriaClinica_Mad_Estado_Fin_Consulta_Medica")]
+        public async Task<IActionResult> AddHistoriaClinicaMadEstadoFinConsultaMedica(HistoriaClinicaEstadoFinConsultaViewModel model)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelStateExtensions.GetErrorMessage(ModelState));
+
+            HistoriaClinicaEstadoFinConsultaDto dto = new HistoriaClinicaEstadoFinConsultaDto
+            {
+                CHIS_ID = model.chis_id,
+                CHCP_COD_ASO = model.chcp_cod_aso,
+                CPAC_ID = model.cpac_id,
+                CESP_ID = model.cesp_id,
+                CUBI_ID = model.cubi_id,
+                CTDO_ID = model.ctdo_id,
+                CEMP_ID = model.cemp_id,
+                FHCP_EXP = model.fhcp_exp,
+                FHCP_EXI_ATE = model.fhcp_exi_ate,
+                NHCP_TAR_ATE = model.nhcp_tar_ate,
+                NHCP_TAR_ATEOPE = model.nhcp_tar_ateope,
+                SHCP_OBS_ATE = model.shcp_obs_ate,
+                SHCP_COD_TIPO_DOCTOR = model.shcp_cod_tipo_doctor,
+                FHCP_FLGVNR = model.fhcp_flgvnr,
+                SHCP_ACCIDE = model.shcp_accide,
+                SHCP_FOR_ATE = model.shcp_for_ate,
+                SHCP_SIN_ATE = model.shcp_sin_ate,
+                SHCP_CODTAR_ATE = model.shcp_codtar_ate,
+                SHCP_NTAR_ATE = model.shcp_ntar_ate,
+                DHCP_FVENC_ATE = model.dhcp_fvenc_ate,
+                DHCP_FECLLA = model.dhcp_feclla,
+                DHCP_HORLLA = model.dhcp_horlla,
+                DHCP_FECFIN = model.dhcp_fecfin,
+                DHCP_HORFIN = model.dhcp_horfin,
+                FHCP_YO = model.fhcp_yo,
+                SHCP_CANC_ATE = model.shcp_canc_ate,
+                SHCP_POLIZA_ASEGURADO = model.shcp_poliza_asegurado,
+                SHCP_COD_AUT_PRESTACION = model.shcp_cod_aut_prestacion,
+                SHCP_COD_SOLGEN = model.shcp_cod_solgen,
+                SHCP_CODAASEG_EPS = model.shcp_codaaseg_eps,
+                NHCP_COASEGURO = model.nhcp_coaseguro,
+                SHCP_COD_DENOMINACION = model.shcp_cod_denominacion,
+                SHCP_F_SERV = model.shcp_f_serv,
+                SHCP_CM_ASEG_PRODUCTO = model.shcp_cm_aseg_producto,
+                SHCP_TIPO_SERVICIO = model.shcp_tipo_servicio,
+                NHCP_USUARIO_CREACION = model.nhcp_usuario_creacion,
+                DHCP_FECHA_CREACION = model.dhcp_fecha_creacion,
+                NHCP_USUARIO_MODIFICACION = model.nhcp_usuario_modificacion,
+                DHCP_FECHA_MODIFICACION = model.dhcp_fecha_modificacion,
+            };
+
+            var response = await _historiaClinicaService.AddHistoriaClinicaMadEstadoFinConsultaMedica(dto);
+
+            return ReturnFormattedResponse(response);
+        }
+
+        //7 - 8 (API 7)
+        [HttpPost, Route("AddHistoriaClinica_Mad_Auditoria_Estado_Fin_Consulta_Medica")]
+        public async Task<IActionResult> AddHistoriaClinicaMadAuditoriaEstadoFinConsultaMedica(AddHistoriaClinicaMadAuditoriaEstadoViewModel model)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelStateExtensions.GetErrorMessage(ModelState));
+
+            HistoriaClinicaMadAuditoriaEstadoDto dto = new HistoriaClinicaMadAuditoriaEstadoDto
+            {
+                NUMEROHISTORIA = model.NUMEROHISTORIA,
+                ESTADO = model.ESTADO,
+                USUARIO = model.USUARIO,
+                OBSERVACION = model.OBSERVACION,
+                CAMBIO = model.CAMBIO,
+                USUARIO_CREACION = model.USUARIO_CREACION,
+            };
+
+            var response = await _historiaClinicaService.AddHistoriaClinicaMadAuditoriaEstadoFinConsultaMedica(dto);
+
+            return ReturnFormattedResponse(response);
+        }
+
     }
 }

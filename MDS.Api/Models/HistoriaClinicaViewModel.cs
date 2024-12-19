@@ -468,4 +468,64 @@ namespace MDS.Api.Models
         public int NHIS_CM_ORDEN { get; set; }
     }
     #endregion
+
+    public class HistoriaClinicaMadAuditoriaEstadoFinConsultaViewModel
+    {
+        public int numero_historia { get; set; }
+        public string? fecoplla_ate { get; set; }
+        public string? horoplla_ate { get; set; }
+        public string fecdia_ate { get; set; }
+        public string hordia_ate { get; set; }
+        public string usudia_ate { get; set; }
+        public string accide { get; set; }
+        public bool atencion_referencial { get; set; }
+        public int onRespuesta { get; set; }
+    }
+
+    public class HistoriaClinicaEstadoFinConsultaViewModel
+    {
+        public int chis_id { get; set; }
+        public int chcp_cod_aso { get; set; }
+        public int cpac_id { get; set; }
+        public int cesp_id { get; set; }
+        public int cubi_id { get; set; }
+        public int ctdo_id { get; set; }
+        public int cemp_id { get; set; }
+        public bool fhcp_exp { get; set; }
+        public bool fhcp_sb_ate { get; set; }
+        public bool fhcp_exi_ate { get; set; }
+        public float nhcp_tar_ate { get; set; }
+        public float nhcp_tar_ateope { get; set; }
+        public string shcp_obs_ate { get; set; }
+        public string shcp_cod_tipo_doctor { get; set; }
+        public bool fhcp_flgvnr { get; set; }
+        public string shcp_accide { get; set; }
+        public string shcp_for_ate { get; set; }
+        public string shcp_sin_ate { get; set; }
+        public string shcp_codtar_ate { get; set; }
+        public string shcp_ntar_ate { get; set; }
+        public string dhcp_fvenc_ate { get; set; }
+        public string dhcp_feclla { get; set; }
+        public string dhcp_horlla { get; set; }
+        public string dhcp_fecfin { get; set; }
+        public string dhcp_horfin { get; set; }
+        public bool fhcp_yo { get; set; }
+        public string shcp_canc_ate { get; set; }
+        public string shcp_poliza_asegurado { get; set; }
+        public string shcp_cod_aut_prestacion { get; set; }
+        public string shcp_cod_solgen { get; set; }
+        public string shcp_codaaseg_eps { get; set; }
+        public int nhcp_coaseguro { get; set; }
+        public string shcp_cod_denominacion { get; set; }
+        public string shcp_f_serv { get; set; }
+        public string shcp_cm_aseg_producto { get; set; }
+        public string shcp_tipo_servicio { get; set; }
+        public int nhcp_usuario_creacion { get; set; }
+        public string dhcp_fecha_creacion { get; set; }
+        public int nhcp_usuario_modificacion { get; set; }
+        public string dhcp_fecha_modificacion { get; set; }
+
+        public int onRespuesta { get; set; }
+    }
+
 }

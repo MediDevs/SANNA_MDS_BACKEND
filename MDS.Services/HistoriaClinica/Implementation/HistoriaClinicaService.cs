@@ -2607,5 +2607,393 @@ namespace MDS.Services.HistoriaClinica.Implementation
         }
 
         #endregion
+
+        //ESTADO 6 - 7
+
+        //By Henrry Torres
+        //6 - 7 (API 1)
+        public async Task<ServiceResponse> GetHistoriaClinicaMadConfirmarLlegadaMedico(int codigoHistoria)
+        {
+            try
+            {
+                SqlParameter[] parameters =
+                {
+                    new SqlParameter("@NUMERO_HISTORIA", SqlDbType.Int) {Direction = ParameterDirection.Input, Value = codigoHistoria},
+                };
+
+                List<DbContext.Entities.HistoriaClinicaMadConfirmarLlegadaMedico> historiasClinicas = new List<DbContext.Entities.HistoriaClinicaMadConfirmarLlegadaMedico>();
+
+                historiasClinicas = await _uow.ExecuteStoredProcByParam<DbContext.Entities.HistoriaClinicaMadConfirmarLlegadaMedico>("SPRMDS_LIST_HISTORIA_CLINICA_MAD_CONFIRMAR_LLEGADA_MEDICO", parameters);
+
+                List<HistoriaClinicaMadConfirmarLlegadaMedicoDto> list = new List<HistoriaClinicaMadConfirmarLlegadaMedicoDto>();
+
+                list = historiasClinicas.Select(s => new HistoriaClinicaMadConfirmarLlegadaMedicoDto
+                {
+                    cod_historia_clinica = s.CHIS_ID,
+                    cm_estado = s.SHIS_CM_ESTADO,
+                    clasificacion_pac = s.NHIS_CLASIFICACION_PAC,
+                    paciente = s.PACIENTE,
+                    distrito = s.DISTRITO,
+                    direccion = s.DIRECCION,
+                    medico = s.MEDICO
+                }).ToList();
+
+                if (!historiasClinicas.Any())
+                    return ServiceResponse.ReturnResultWith204();
+
+                return ServiceResponse.ReturnResultWith200(list);
+            }
+            catch (Exception e)
+            {
+                return ServiceResponse.Return500(e);
+            }
+        }
+
+        //By Henrry Torres
+        //6 - 7 (API 2)
+        public async Task<ServiceResponse> GetHistoriaClinicaMadEstado7(int codigoMedico, DateTime fechaLlegada, DateTime horaLlegada)
+        {
+            try
+            {
+                SqlParameter[] parameters =
+                {
+                    new SqlParameter("@CODIGO_MEDICO", SqlDbType.Int) {Direction = ParameterDirection.Input, Value = codigoMedico},
+                    new SqlParameter("@FECHA_LLEGADA", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = fechaLlegada},
+                    new SqlParameter("@HORA_LLEGADA", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = horaLlegada},
+                };
+
+                List<DbContext.Entities.HistoriaClinicaMadEstado7> historiasClinicas = new List<DbContext.Entities.HistoriaClinicaMadEstado7>();
+
+                historiasClinicas = await _uow.ExecuteStoredProcByParam<DbContext.Entities.HistoriaClinicaMadEstado7>("SPRMDS_ESTADO_7_API2", parameters);
+
+                List<HistoriaClinicaMadEstado7Dto> list = new List<HistoriaClinicaMadEstado7Dto>();
+
+                list = historiasClinicas.Select(s => new HistoriaClinicaMadEstado7Dto
+                {
+                    cod_conductor = s.CMCH_ID,
+                    conductor = s.CONDUCTOR,
+                    fecha_inicio_asignado = s.DMCH_FEC_INI_ASIG,
+                    hora_inicio_asignado = s.DMCH_HOR_INI_ASIG,
+                    fecha_fin_asignado = s.DMCH_FEC_FIN_ASIG,
+                    hora_fin_asignado = s.DMCH_HOR_FIN_ASIG
+                }).ToList();
+
+                if (!historiasClinicas.Any())
+                    return ServiceResponse.ReturnResultWith204();
+
+                return ServiceResponse.ReturnResultWith200(list);
+            }
+            catch (Exception e)
+            {
+                return ServiceResponse.Return500(e);
+            }
+        }
+
+        //By Henrry Torres
+        //6 - 7 (API 3)
+        public async Task<ServiceResponse> AddHistoriaClinicaMadAuditoriaConfirmarLlegadaMedico(HistoriaClinicaMadAuditoriaEstadoDto dto)
+        {
+            try
+            {
+                SqlParameter[] parameters =
+                {
+                    new SqlParameter("@NUMEROHISTORIA", SqlDbType.Int) {Direction = ParameterDirection.Input, Value = dto.NUMEROHISTORIA },
+                    new SqlParameter("@ESTADO", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = dto.ESTADO,},
+                    new SqlParameter("@USUARIO", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = dto.USUARIO,},
+                    new SqlParameter("@OBSERVACION", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = dto.OBSERVACION,},
+                    new SqlParameter("@CAMBIO", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = dto.CAMBIO,},
+                    new SqlParameter("@USUARIO_CREACION", SqlDbType.Int) {Direction = ParameterDirection.Input, Value = dto.USUARIO_CREACION,},
+
+                    new SqlParameter("@onRespuesta", SqlDbType.Int) {Direction = ParameterDirection.Output}
+                };
+
+                int response = await _uow.ExecuteStoredProcReturnValue("SPRMDS_ADD_HISTORIA_CLINICA_AUDITORIA_ESTADO_CONFIRMAR_LLEGADA_MEDICO", parameters);
+
+                dto.onRespuesta = response;
+
+                return ServiceResponse.ReturnResultWith201(dto);
+
+            }
+            catch (Exception e)
+            {
+                //_logger.Error(e);
+                return ServiceResponse.Return500(e);
+            }
+        }
+
+        //By Henrry Torres
+        //6 - 7 (API 4)
+        public async Task<ServiceResponse> UpdateHistoriaClinicaMadAuditoriaConfirmarLlegadaMedico(HistoriaClinicaMadAuditoriaEstadoDto dto)
+        {
+            try
+            {
+                SqlParameter[] parameters =
+                {
+                    new SqlParameter("@NUMEROHISTORIA", SqlDbType.Int) {Direction = ParameterDirection.Input, Value = dto.NUMEROHISTORIA },
+                    new SqlParameter("@ESTADO", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = dto.ESTADO,},
+                    new SqlParameter("@USUARIO", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = dto.USUARIO,},
+                    new SqlParameter("@OBSERVACION", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = dto.OBSERVACION,},
+                    new SqlParameter("@CAMBIO", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = dto.CAMBIO,},
+                    new SqlParameter("@USUARIO_CREACION", SqlDbType.Int) {Direction = ParameterDirection.Input, Value = dto.USUARIO_CREACION,},
+
+                    new SqlParameter("@onRespuesta", SqlDbType.Int) {Direction = ParameterDirection.Output}
+                };
+
+                int response = await _uow.ExecuteStoredProcReturnValue("SPRMDS_UPDATE_HISTORIA_CLINICA_AUDITORIA_ESTADO_CONFIRMAR_LLEGADA_MEDICO", parameters);
+
+                dto.onRespuesta = response;
+
+                return ServiceResponse.ReturnResultWith201(dto);
+
+            }
+            catch (Exception e)
+            {
+                //_logger.Error(e);
+                return ServiceResponse.Return500(e);
+            }
+        }
+
+        //ESTADO 7 - 8
+
+        //By Henrry Torres
+        //7 - 8 (API 1)
+        public async Task<ServiceResponse> GetHistoriaClinicaMadFinConsultaMedica(int codigoHistoria, int codigoPaciente, int codigoDireccion)
+        {
+            try
+            {
+                SqlParameter[] parameters =
+                {
+                    new SqlParameter("@NUMERO_HISTORIA", SqlDbType.Int) {Direction = ParameterDirection.Input, Value = codigoHistoria},
+                    new SqlParameter("@CODIGO_PACIENTE", SqlDbType.Int) {Direction = ParameterDirection.Input, Value = codigoPaciente},
+                    new SqlParameter("@CODIGO_DIRECCION", SqlDbType.Int) {Direction = ParameterDirection.Input, Value = codigoDireccion},
+                };
+
+                List<DbContext.Entities.HistoriaClinicaMadFinConsultaMedica> historiasClinicas = new List<DbContext.Entities.HistoriaClinicaMadFinConsultaMedica>();
+
+                historiasClinicas = await _uow.ExecuteStoredProcByParam<DbContext.Entities.HistoriaClinicaMadFinConsultaMedica>("SPRMDS_LIST_HISTORIA_CLINICA_MAD_CONFIRMAR_LLEGADA_MEDICO", parameters);
+
+                List<HistoriaClinicaMadFinConsultaMedicaDto> list = new List<HistoriaClinicaMadFinConsultaMedicaDto>();
+
+                list = historiasClinicas.Select(s => new HistoriaClinicaMadFinConsultaMedicaDto
+                {
+                    Hora = s.HORA,
+                    cod_historia_clinica = s.CHIS_ID,
+                    cm_estado = s.SHIS_CM_ESTADO,
+                    estado = s.NHIS_COD_ESTADO,
+                    clasificacion_pac = s.NHIS_CLASIFICACION_PAC,
+                    fecoplla_ate = s.DHIS_FECOPLLA_ATE,
+                    fecha_atencion = s.DHIS_FEC_ATE,
+                    contador_periodo = s.NHIS_CONTADOR_PERIODO,
+                    paciente = s.PACIENTE,
+                    distrito = s.DISTRITO,
+                    direccion = s.DIRECCION,
+                    medico = s.MEDICO,
+                    conductor = s.CONDUCTOR
+                }).ToList();
+
+                if (!historiasClinicas.Any())
+                    return ServiceResponse.ReturnResultWith204();
+
+                return ServiceResponse.ReturnResultWith200(list);
+            }
+            catch (Exception e)
+            {
+                return ServiceResponse.Return500(e);
+            }
+        }
+
+        //By Henrry Torres
+        //7 - 8 (API 2)
+        public async Task<ServiceResponse> UpdateHistoriaClinicaEstadoMadFinConsultaMedica(HistoriaClinicaMadAuditoriaEstadoFinConsultaDto dto)
+        {
+            try
+            {
+                SqlParameter[] parameters =
+                {
+                    new SqlParameter("@NUMERO_HISTORIA", SqlDbType.Int) {Direction = ParameterDirection.Input, Value = dto.NUMERO_HISTORIA },
+                    new SqlParameter("@FECDIA_ATE", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = dto.FECDIA_ATE,},
+                    new SqlParameter("@HORDIA_ATE", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = dto.HORDIA_ATE,},
+                    new SqlParameter("@USUDIA_ATE", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = dto.USUDIA_ATE,},
+                    new SqlParameter("@ACCIDE", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = dto.ACCIDE,},
+                    new SqlParameter("@ATENCION_REFERENCIAL", SqlDbType.Int) {Direction = ParameterDirection.Input, Value = dto.ATENCION_REFERENCIAL,},
+
+                    new SqlParameter("@onRespuesta", SqlDbType.Int) {Direction = ParameterDirection.Output}
+                };
+
+                int response = await _uow.ExecuteStoredProcReturnValue("SPRMDS_UPDATE_HISTORIA_CLINICA_AUDITORIA_ESTADO_MAD_FIN_CONSULTA_MEDICA", parameters);
+
+                dto.onRespuesta = response;
+
+                return ServiceResponse.ReturnResultWith201(dto);
+
+            }
+            catch (Exception e)
+            {
+                //_logger.Error(e);
+                return ServiceResponse.Return500(e);
+            }
+        }
+
+        //By Henrry Torres
+        //7 - 8 (API 3)
+        public async Task<ServiceResponse> UpdateHistoriaClinicaOtrosServiciosFinConsultaMedica(HistoriaClinicaMadAuditoriaEstadoFinConsultaDto dto)
+        {
+            try
+            {
+                SqlParameter[] parameters =
+                {
+                    new SqlParameter("@NUMERO_HISTORIA", SqlDbType.Int) {Direction = ParameterDirection.Input, Value = dto.NUMERO_HISTORIA },
+                    new SqlParameter("@FECOPLLA_ATE", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = dto.FECOPLLA_ATE,},
+                    new SqlParameter("@HOROPLLA_ATE", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = dto.HOROPLLA_ATE,},
+                    new SqlParameter("@FECDIA_ATE", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = dto.FECDIA_ATE,},
+                    new SqlParameter("@HORDIA_ATE", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = dto.HORDIA_ATE,},
+                    new SqlParameter("@USUDIA_ATE", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = dto.USUDIA_ATE,},
+                    new SqlParameter("@ACCIDE", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = dto.ACCIDE,},
+                    new SqlParameter("@ATENCION_REFERENCIAL", SqlDbType.Int) {Direction = ParameterDirection.Input, Value = dto.ATENCION_REFERENCIAL},
+
+                    new SqlParameter("@onRespuesta", SqlDbType.Int) {Direction = ParameterDirection.Output}
+                };
+
+                int response = await _uow.ExecuteStoredProcReturnValue("SPRMDS_UPDATE_HISTORIA_CLINICA_AUDITORIA_ESTADO_OTROS_SERVICIOS_FIN_CONSULTA_MEDICA", parameters);
+
+                dto.onRespuesta = response;
+
+                return ServiceResponse.ReturnResultWith201(dto);
+
+            }
+            catch (Exception e)
+            {
+                //_logger.Error(e);
+                return ServiceResponse.Return500(e);
+            }
+        }
+
+        //7 - 8 (API 4)
+        //Aun esta en análisis
+
+        //By Henrry Torres
+        //7 - 8 (API 5)
+        public async Task<ServiceResponse> DeleteHistoriaClinicaOtrosServiciosFinConsultaMedica(HistoriaClinicaMadAuditoriaEstadoFinConsultaDto dto)
+        {
+            try
+            {
+                SqlParameter[] parameters =
+                {
+                    new SqlParameter("@NUMERO_HISTORIA", SqlDbType.Int) {Direction = ParameterDirection.Input, Value = dto.NUMERO_HISTORIA },
+
+                    new SqlParameter("@onRespuesta", SqlDbType.Int) {Direction = ParameterDirection.Output}
+                };
+
+                int response = await _uow.ExecuteStoredProcReturnValue("SPRMDS_DELETE_HISTORIA_CLINICA_AUDITORIA_ESTADO_FIN_CONSULTA_MEDICA", parameters);
+
+                dto.onRespuesta = response;
+
+                return ServiceResponse.ReturnResultWith201(dto);
+
+            }
+            catch (Exception e)
+            {
+                //_logger.Error(e);
+                return ServiceResponse.Return500(e);
+            }
+        }
+
+        //By Henrry Torres
+        //7 - 8 (API 6)
+        public async Task<ServiceResponse> AddHistoriaClinicaMadEstadoFinConsultaMedica(HistoriaClinicaEstadoFinConsultaDto dto)
+        {
+            try
+            {
+                SqlParameter[] parameters =
+                {
+                    new SqlParameter("@CHIS_ID", SqlDbType.Int) {Direction = ParameterDirection.Input, Value = dto.CHIS_ID },
+                    new SqlParameter("@CHCP_COD_ASO", SqlDbType.Int) {Direction = ParameterDirection.Input, Value = dto.CHCP_COD_ASO },
+                    new SqlParameter("@CPAC_ID", SqlDbType.Int) {Direction = ParameterDirection.Input, Value = dto.CPAC_ID },
+                    new SqlParameter("@CESP_ID", SqlDbType.Int) {Direction = ParameterDirection.Input, Value = dto.CESP_ID },
+                    new SqlParameter("@CUBI_ID", SqlDbType.Int) {Direction = ParameterDirection.Input, Value = dto.CUBI_ID },
+                    new SqlParameter("@CTDO_ID", SqlDbType.Bit) {Direction = ParameterDirection.Input, Value = dto.CTDO_ID },
+                    new SqlParameter("@CEMP_ID", SqlDbType.Bit) {Direction = ParameterDirection.Input, Value = dto.CEMP_ID },
+                    new SqlParameter("@FHCP_EXP", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = dto.FHCP_EXP },
+                    new SqlParameter("@FHCP_EXI_ATE", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = dto.FHCP_EXI_ATE },
+                    new SqlParameter("@NHCP_TAR_ATE", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = dto.NHCP_TAR_ATE },
+                    new SqlParameter("@NHCP_TAR_ATEOPE", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = dto.NHCP_TAR_ATEOPE },
+                    new SqlParameter("@SHCP_OBS_ATE", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = dto.SHCP_OBS_ATE },
+                    new SqlParameter("@SHCP_COD_TIPO_DOCTOR", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = dto.SHCP_COD_TIPO_DOCTOR },
+                    new SqlParameter("@FHCP_FLGVNR", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = dto.FHCP_FLGVNR },
+                    new SqlParameter("@SHCP_ACCIDE", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = dto.SHCP_ACCIDE },
+                    new SqlParameter("@SHCP_FOR_ATE", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = dto.SHCP_FOR_ATE },
+                    new SqlParameter("@SHCP_SIN_ATE", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = dto.SHCP_SIN_ATE },
+                    new SqlParameter("@SHCP_CODTAR_ATE", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = dto.SHCP_CODTAR_ATE },
+                    new SqlParameter("@SHCP_NTAR_ATE", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = dto.SHCP_NTAR_ATE },
+                    new SqlParameter("@DHCP_FVENC_ATE", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = dto.DHCP_FVENC_ATE },
+                    new SqlParameter("@DHCP_FECLLA", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = dto.DHCP_FECLLA },
+                    new SqlParameter("@DHCP_HORLLA", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = dto.DHCP_HORLLA },
+                    new SqlParameter("@DHCP_FECFIN", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = dto.DHCP_FECFIN },
+                    new SqlParameter("@DHCP_HORFIN", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = dto.DHCP_HORFIN },
+                    new SqlParameter("@FHCP_YO", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = dto.FHCP_YO },
+                    new SqlParameter("@SHCP_CANC_ATE", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = dto.SHCP_CANC_ATE },
+                    new SqlParameter("@SHCP_POLIZA_ASEGURADO", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = dto.SHCP_POLIZA_ASEGURADO },
+                    new SqlParameter("@SHCP_COD_AUT_PRESTACION", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = dto.SHCP_COD_AUT_PRESTACION },
+                    new SqlParameter("@SHCP_COD_SOLGEN", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = dto.SHCP_COD_SOLGEN },
+                    new SqlParameter("@SHCP_CODAASEG_EPS", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = dto.SHCP_CODAASEG_EPS },
+                    new SqlParameter("@NHCP_COASEGURO", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = dto.NHCP_COASEGURO },
+                    new SqlParameter("@SHCP_COD_DENOMINACION", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = dto.SHCP_COD_DENOMINACION },
+                    new SqlParameter("@SHCP_F_SERV", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = dto.SHCP_F_SERV },
+                    new SqlParameter("@SHCP_CM_ASEG_PRODUCTO", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = dto.SHCP_CM_ASEG_PRODUCTO },
+                    new SqlParameter("@SHCP_TIPO_SERVICIO", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = dto.SHCP_TIPO_SERVICIO },
+                    new SqlParameter("@NHCP_USUARIO_CREACION", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = dto.NHCP_USUARIO_CREACION },
+                    new SqlParameter("@DHCP_FECHA_CREACION", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = dto.DHCP_FECHA_CREACION },
+                    new SqlParameter("@NHCP_USUARIO_MODIFICACION", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = dto.NHCP_USUARIO_MODIFICACION },
+                    new SqlParameter("@DHCP_FECHA_MODIFICACION", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = dto.DHCP_FECHA_MODIFICACION },
+
+                    new SqlParameter("@onRespuesta", SqlDbType.Int) {Direction = ParameterDirection.Output}
+                };
+
+                int response = await _uow.ExecuteStoredProcReturnValue("SPRMDS_ADD_HISTORIA_CLINICA_ESTADO_FIN_CONSULTA_MEDICA", parameters);
+
+                dto.onRespuesta = response;
+
+                return ServiceResponse.ReturnResultWith201(dto);
+
+            }
+            catch (Exception e)
+            {
+                //_logger.Error(e);
+                return ServiceResponse.Return500(e);
+            }
+        }
+
+        //By Henrry Torres
+        //7 - 8 (API 7)
+        public async Task<ServiceResponse> AddHistoriaClinicaMadAuditoriaEstadoFinConsultaMedica(HistoriaClinicaMadAuditoriaEstadoDto dto)
+        {
+            try
+            {
+                SqlParameter[] parameters =
+                {
+                    new SqlParameter("@NUMEROHISTORIA", SqlDbType.Int) {Direction = ParameterDirection.Input, Value = dto.NUMEROHISTORIA },
+                    new SqlParameter("@ESTADO", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = dto.ESTADO,},
+                    new SqlParameter("@USUARIO", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = dto.USUARIO,},
+                    new SqlParameter("@OBSERVACION", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = dto.OBSERVACION,},
+                    new SqlParameter("@CAMBIO", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = dto.CAMBIO,},
+                    new SqlParameter("@USUARIO_CREACION", SqlDbType.Int) {Direction = ParameterDirection.Input, Value = dto.USUARIO_CREACION,},
+
+                    new SqlParameter("@onRespuesta", SqlDbType.Int) {Direction = ParameterDirection.Output}
+                };
+
+                int response = await _uow.ExecuteStoredProcReturnValue("SPRMDS_ADD_HISTORIA_CLINICA_AUDITORIA_ESTADO_FIN_CONSULTA_MEDICA", parameters);
+
+                dto.onRespuesta = response;
+
+                return ServiceResponse.ReturnResultWith201(dto);
+
+            }
+            catch (Exception e)
+            {
+                //_logger.Error(e);
+                return ServiceResponse.Return500(e);
+            }
+        }
+
     }
 }

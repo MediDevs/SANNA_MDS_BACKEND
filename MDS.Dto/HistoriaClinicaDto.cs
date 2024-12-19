@@ -1492,5 +1492,101 @@ namespace MDS.Dto
     }
     #endregion
 
+    public class HistoriaClinicaMadAuditoriaEstadoFinConsultaDto
+    {
+        public int NUMERO_HISTORIA { get; set; }
+        public string? FECOPLLA_ATE { get; set; }
+        public string? HOROPLLA_ATE { get; set; }
+        public string FECDIA_ATE { get; set; }
+        public string HORDIA_ATE { get; set; }
+        public string USUDIA_ATE { get; set; }
+        public string ACCIDE { get; set; }
+        public bool ATENCION_REFERENCIAL { get; set; }
+        public int onRespuesta { get; set; }
+    }
+
+    public class HistoriaClinicaEstadoFinConsultaDto
+    {
+        public int CHIS_ID { get; set; }
+        public int CHCP_COD_ASO { get; set; }
+        public int CPAC_ID { get; set; }
+        public int CESP_ID { get; set; }
+        public int CUBI_ID { get; set; }
+        public int CTDO_ID { get; set; }
+        public int CEMP_ID { get; set; }
+        public bool FHCP_EXP { get; set; }
+        public bool FHCP_SB_ATE { get; set; }
+        public bool FHCP_EXI_ATE { get; set; }
+        public float NHCP_TAR_ATE { get; set; }
+        public float NHCP_TAR_ATEOPE { get; set; }
+        public string SHCP_OBS_ATE { get; set; }
+        public string SHCP_COD_TIPO_DOCTOR { get; set; }
+        public bool FHCP_FLGVNR { get; set; }
+        public string SHCP_ACCIDE { get; set; }
+        public string SHCP_FOR_ATE { get; set; }
+        public string SHCP_SIN_ATE { get; set; }
+        public string SHCP_CODTAR_ATE { get; set; }
+        public string SHCP_NTAR_ATE { get; set; }
+        public string DHCP_FVENC_ATE { get; set; }
+        public string DHCP_FECLLA { get; set; }
+        public string DHCP_HORLLA { get; set; }
+        public string DHCP_FECFIN { get; set; }
+        public string DHCP_HORFIN { get; set; }
+        public bool FHCP_YO { get; set; }
+        public string SHCP_CANC_ATE { get; set; }
+        public string SHCP_POLIZA_ASEGURADO { get; set; }
+        public string SHCP_COD_AUT_PRESTACION { get; set; }
+        public string SHCP_COD_SOLGEN { get; set; }
+        public string SHCP_CODAASEG_EPS { get; set; }
+        public int NHCP_COASEGURO { get; set; }
+        public string SHCP_COD_DENOMINACION { get; set; }
+        public string SHCP_F_SERV { get; set; }
+        public string SHCP_CM_ASEG_PRODUCTO { get; set; }
+        public string SHCP_TIPO_SERVICIO { get; set; }
+        public int NHCP_USUARIO_CREACION { get; set; }
+        public string DHCP_FECHA_CREACION { get; set; }
+        public int NHCP_USUARIO_MODIFICACION { get; set; }
+        public string DHCP_FECHA_MODIFICACION { get; set; }
+        public int onRespuesta { get; set; }
+    }
+
+    public class HistoriaClinicaMadConfirmarLlegadaMedicoDto
+    {
+        public int cod_historia_clinica { get; set; }
+        public string cm_estado { get; set; }
+        public int clasificacion_pac { get; set; }
+        public string paciente { get; set; }
+        public string distrito { get; set; }
+        public string direccion { get; set; }
+        public string medico { get; set; }
+    }
+
+    public class HistoriaClinicaMadEstado7Dto
+    {
+        public int cod_conductor { get; set; }
+        public string conductor { get; set; }
+        public string anulada { get; set; }
+        public string fecha_inicio_asignado { get; set; }
+        public string hora_inicio_asignado { get; set; }
+        public string fecha_fin_asignado { get; set; }
+        public string hora_fin_asignado { get; set; }
+    }
+
+    public class HistoriaClinicaMadFinConsultaMedicaDto
+    {
+        public string Hora { get; set; }
+        public int cod_historia_clinica { get; set; }
+        public string cm_estado { get; set; }
+        public int estado { get; set; }
+        public int clasificacion_pac { get; set; }
+        public string fecoplla_ate { get; set; }
+        public string fecha_atencion { get; set; }
+        public int contador_periodo { get; set; }
+        public string paciente { get; set; }
+        public string distrito { get; set; }
+        public string direccion { get; set; }
+        public string medico { get; set; }
+        public string conductor { get; set; }
+    }
 
 }
