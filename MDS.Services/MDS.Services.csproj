@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="GoogleAuthenticator" Version="3.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR" Version="1.1.0" />
+    <PackageReference Include="Microsoft.SqlServer.Server" Version="1.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MDS.DbContext\MDS.DbContext.csproj" />
+    <ProjectReference Include="..\MDS.Dto\MDS.Dto.csproj" />
+    <ProjectReference Include="..\MDS.Infrastructure\MDS.Infrastructure.csproj" />
+    <ProjectReference Include="..\MDS.Utility\MDS.Utility.csproj" />
+  </ItemGroup>
+
+</Project>
