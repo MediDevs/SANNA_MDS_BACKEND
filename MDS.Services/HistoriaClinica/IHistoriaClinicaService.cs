@@ -151,15 +151,30 @@ namespace MDS.Services.HistoriaClinica
 
         //////////////////          FIN SERVICIO MAD          //////////////////
         ///
+
+        #region "Estado 0 - 2 - 3"
         Task<ServiceResponse> GetHistoriaClinica_Mad_Asignacion_Tiempo_Doctor(int codHistoriaClinica);
         Task<ServiceResponse> GetHistoriaClinica_Mad_Asignacion_By_Especialidad(string nombreEspecialidad, int personaId);
         Task<ServiceResponse> GetHistoriaClinica_Mad_Asignacion_By_Medico(string usuario, int clasificacion, int codigoEspecialidad, int personaId, string nombreMedico);
         Task<ServiceResponse> GetHistoriaClinica_Mad_Asignacion_Especiliadad_Medico(int codigoMedico, int codigoEspecialidad);
         Task<ServiceResponse> AddHistoriaClinicaMadAuditoriaEstado(HistoriaClinicaMadAuditoriaEstadoDto dto);
         Task<ServiceResponse> UpdateHistoriaClinicaMadEstado(HistoriaClinicaMadEstadoDto dto);
-        Task<ServiceResponse> GetHistoriaClinicaMadValidacionTiempo(int codigoHistoria, int codigoMedico);
         Task<ServiceResponse> GetHistoriaClinicaMadTipoProgramacion();
         Task<ServiceResponse> GetHistoriaClinicaMadSubTipoProgramacion();
+        #endregion
+
+        #region "Estado 3 - 5"
+        Task<ServiceResponse> GetHistoriaClinicaMadValidacionTiempo(int codigoHistoria, int codigoMedico);
+        Task<ServiceResponse> AddHistoriaClinicaAuditoriaEstadoValidacionTiempo(HistoriaClinicaAuditoriaEstadoValidacionTiempoDto dto);
+        Task<ServiceResponse> UpdateHistoriaClinicaAuditoriaEstadoValidacionTiempo(UpdateHistoriaClinicaAuditoriaEstadoValidacionTiempoDto dto);
+        #endregion
+
+        #region "Estado 5 - 6"
+        Task<ServiceResponse> GetHistoriaClinicaMadConfirmarRecepcionMensaje(int numeroHistoria);
+        Task<ServiceResponse> AddHistoriaClinicaAuditoriaEstadoRecepcionMensaje(AddHistoriaClinicaAuditoriaEstadoRecepcionMensajeDto dto);
+        Task<ServiceResponse> UpdateHistoriaClinicaAuditoriaEstadoRecepcionMensaje(UpdateHistoriaClinicaAuditoriaEstadoRecepcionMensajeDto dto);
+
+        #endregion
     }
 }
 

@@ -2074,6 +2074,7 @@ namespace MDS.DbContext.Entities
     }
     /*FIN MAD*/
 
+    #region "Estado 0 - 2 - 3"
     public class HistoriaClinicaMadAsignacionTiempoDoctor
     {
         public string SHIS_FORMAPAGO { get; set; }
@@ -2102,7 +2103,7 @@ namespace MDS.DbContext.Entities
         public string SHIS_F_SOLDOCT { get; set; }
         public string SHIS_TMP_COD_TIT { get; set; }
         public int NHIS_MOTIVO_TIPO_PROG { get; set; }
-        public int CMED_ID { get; set; }     
+        public int CMED_ID { get; set; }
         public string MEDICO { get; set; }
         public int CESP_ID { get; set; }
         public string ESPECIALIDAD { get; set; }
@@ -2132,7 +2133,9 @@ namespace MDS.DbContext.Entities
         public string MEDICO { get; set; }
         public string SMED_TIPO_DOCTOR { get; set; }
     }
+    #endregion
 
+    #region "Estado 3 - 5"
     public class HistoriaClinicaMadValidacionTiempo
     {
         public string SHIS_CM_ESTADO { get; set; }
@@ -2148,4 +2151,21 @@ namespace MDS.DbContext.Entities
         public string CONDUCTOR { get; set; }
 
     }
+    #endregion
+
+    #region "Estado 3 - 6"
+    public class HistoriaClinicaMadConfirmarRecepcionMensaje
+    {
+        public int CHIS_ID { get; set; }
+        public string SHIS_CM_ESTADO { get; set; }
+        public string SHIS_F_PROG { get; set; }
+        public DateTime DHIS_HOR_ATE { get; set; }
+        public bool FHIS_FLG_REPROGRAMADA { get; set; }
+        public string PACIENTE { get; set; }
+        public string DISTRITO { get; set; }
+        public string DIRECCION { get; set; }
+        public string MEDICO { get; set; }
+        public string CONDUCTOR { get; set; }
+    }
+    #endregion
 }

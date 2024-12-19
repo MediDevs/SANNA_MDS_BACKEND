@@ -389,6 +389,9 @@ namespace MDS.Api.Models
         public string? usuario_eliminacion_pg { get; set; }
     }
 
+
+
+    #region "Estado 0 - 2 - 3"
     public class AddHistoriaClinicaMadAuditoriaEstadoViewModel
     {
         public int NUMEROHISTORIA { get; set; }
@@ -398,7 +401,6 @@ namespace MDS.Api.Models
         public string CAMBIO { get; set; }
         public int USUARIO_CREACION { get; set; }
     }
-
     public class SPRMDS_UPDATE_HISTORIA_CLINICA_AUDITORIA_ESTADOViewModel
     {
         public int @CHIS_ID { get; set; }
@@ -426,4 +428,45 @@ namespace MDS.Api.Models
         public string @SHIS_CM_DR_ANTERIOR { get; set; }
         public bool @FHIS_FLG_VALIDACION_DIRECTA { get; set; }
     }
+    #endregion
+
+    #region "Estado 3 - 5"
+    public class AddHistoriaClinicaAuditoriaEstadoValidacionTiempoViewModel
+    {
+        public int NUMEROHISTORIA { get; set; }
+        public string ESTADO { get; set; }
+        public string USUARIO { get; set; }
+        public string OBSERVACION { get; set; }
+        public string CAMBIO { get; set; }
+        public int USUARIO_CREACION { get; set; }
+    }
+
+    public class UpdateHistoriaClinicaAuditoriaEstadoValidacionTiempoViewModel
+    {
+        public int NUMERO_HISTORIA { get; set; }
+        public DateTime DHIS_HRLLEDR { get; set; }
+        public DateTime DHIS_FECLLEDR { get; set; }
+        public bool FHIS_FLG_CM_NUEVA { get; set; }
+        public string SHIS_CM_ESTADO { get; set; }
+    }
+    #endregion
+
+    #region "Estado 5 - 6"
+    public class AddHistoriaClinicaAuditoriaEstadoRecepcionMensajeViewModel
+    {
+        public int NUMERO_HISTORIA { get; set; }
+        public string ESTADO { get; set; }
+        public string USUARIO { get; set; }
+        public string OBSERVACION { get; set; }
+        public string CAMBIO { get; set; }
+        public int USUARIO_CREACION { get; set; }
+    }
+
+    public class UpdateHistoriaClinicaAuditoriaEstadoRecepcionMensajeViewModel
+    {
+        public int NUMERO_HISTORIA { get; set; }
+        public string SHIS_CM_ESTADO { get; set; }
+        public int NHIS_CM_ORDEN { get; set; }
+    }
+    #endregion
 }

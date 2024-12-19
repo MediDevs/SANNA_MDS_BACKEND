@@ -1229,6 +1229,18 @@ namespace MDS.Api.Controllers
 
         //////////////////          FIN SERVICIO AMBULANCIA          //////////////////
 
+
+
+
+
+
+
+
+
+
+
+
+        #region "Estado 0 - 2 - 3"
         [HttpGet, Route("GetHistoriaClinica_Mad_Asignacion_Tiempo_Doctor")]
         public async Task<IActionResult> GetHistoriaClinica_Mad_Asignacion_Tiempo_Doctor(int codHistoriaClinica)
         {
@@ -1313,18 +1325,10 @@ namespace MDS.Api.Controllers
                 SHIS_F_PROG = model.SHIS_F_PROG,
                 SHIS_F_SOLDOCT = model.SHIS_F_SOLDOCT,
                 SHIS_TMP_COD_TIT = model.SHIS_TMP_COD_TIT,
-                SHIS_USUASGDR_ATE = model.SHIS_USUASGDR_ATE               
+                SHIS_USUASGDR_ATE = model.SHIS_USUASGDR_ATE
             };
 
             var response = await _historiaClinicaService.UpdateHistoriaClinicaMadEstado(dto);
-
-            return ReturnFormattedResponse(response);
-        }
-
-        [HttpGet, Route("GetHistoriaClinica_Mad_Validacion_Tiempo")]
-        public async Task<IActionResult> GetHistoriaClinica_Mad_Validacion_Tiempo(int codigoHistoria, int codigoMedico)
-        {
-            var response = await _historiaClinicaService.GetHistoriaClinicaMadValidacionTiempo(codigoHistoria, codigoMedico);
 
             return ReturnFormattedResponse(response);
         }
@@ -1344,5 +1348,110 @@ namespace MDS.Api.Controllers
 
             return ReturnFormattedResponse(response);
         }
+        #endregion
+
+        #region "Estado 3 - 5"
+
+        [HttpGet, Route("GetHistoriaClinica_Mad_Validacion_Tiempo")]
+        public async Task<IActionResult> GetHistoriaClinica_Mad_Validacion_Tiempo(int codigoHistoria, int codigoMedico)
+        {
+            var response = await _historiaClinicaService.GetHistoriaClinicaMadValidacionTiempo(codigoHistoria, codigoMedico);
+
+            return ReturnFormattedResponse(response);
+        }
+
+        [HttpPost, Route("AddHistoriaClinicaAuditoriaEstadoValidacionTiempo")]
+        public async Task<IActionResult> AddHistoriaClinicaAuditoriaEstadoValidacionTiempo(AddHistoriaClinicaAuditoriaEstadoValidacionTiempoViewModel model)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelStateExtensions.GetErrorMessage(ModelState));
+
+            HistoriaClinicaAuditoriaEstadoValidacionTiempoDto dto = new HistoriaClinicaAuditoriaEstadoValidacionTiempoDto
+            {
+                ESTADO = model.ESTADO,
+                USUARIO_CREACION = model.USUARIO_CREACION,
+                CAMBIO = model.CAMBIO,
+                OBSERVACION = model.OBSERVACION,
+                NUMEROHISTORIA = model.NUMEROHISTORIA,
+                USUARIO = model.USUARIO
+            };
+
+            var response = await _historiaClinicaService.AddHistoriaClinicaAuditoriaEstadoValidacionTiempo(dto);
+
+            return ReturnFormattedResponse(response);
+        }
+
+        [HttpPut, Route("UpdateHistoriaClinicaAuditoriaEstadoValidacionTiempo")]
+        public async Task<IActionResult> UpdateHistoriaClinicaAuditoriaEstadoValidacionTiempo(UpdateHistoriaClinicaAuditoriaEstadoValidacionTiempoViewModel model)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelStateExtensions.GetErrorMessage(ModelState));
+
+            UpdateHistoriaClinicaAuditoriaEstadoValidacionTiempoDto dto = new UpdateHistoriaClinicaAuditoriaEstadoValidacionTiempoDto
+            {
+                DHIS_FECLLEDR = model.DHIS_FECLLEDR,
+                DHIS_HRLLEDR = model.DHIS_HRLLEDR,
+                FHIS_FLG_CM_NUEVA = model.FHIS_FLG_CM_NUEVA,
+                NUMERO_HISTORIA = model.NUMERO_HISTORIA,
+                SHIS_CM_ESTADO = model.SHIS_CM_ESTADO
+            };
+
+            var response = await _historiaClinicaService.UpdateHistoriaClinicaAuditoriaEstadoValidacionTiempo(dto);
+
+            return ReturnFormattedResponse(response);
+        }
+
+        #endregion
+
+        #region "Estado 5 - 6"
+
+        [HttpGet, Route("GetHistoriaClinicaMadConfirmarRecepcionMensaje")]
+        public async Task<IActionResult> GetHistoriaClinicaMadConfirmarRecepcionMensaje(int numeroHistoria)
+        {
+            var response = await _historiaClinicaService.GetHistoriaClinicaMadConfirmarRecepcionMensaje(numeroHistoria);
+
+            return ReturnFormattedResponse(response);
+        }
+
+        [HttpPost, Route("AddHistoriaClinicaAuditoriaEstadoRecepcionMensaje")]
+        public async Task<IActionResult> AddHistoriaClinicaAuditoriaEstadoRecepcionMensaje(AddHistoriaClinicaAuditoriaEstadoRecepcionMensajeViewModel model)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelStateExtensions.GetErrorMessage(ModelState));
+
+            AddHistoriaClinicaAuditoriaEstadoRecepcionMensajeDto dto = new AddHistoriaClinicaAuditoriaEstadoRecepcionMensajeDto
+            {
+                ESTADO = model.ESTADO,
+                USUARIO_CREACION = model.USUARIO_CREACION,
+                CAMBIO = model.CAMBIO,
+                OBSERVACION = model.OBSERVACION,
+                NUMERO_HISTORIA = model.NUMERO_HISTORIA,
+                USUARIO = model.USUARIO
+            };
+
+            var response = await _historiaClinicaService.AddHistoriaClinicaAuditoriaEstadoRecepcionMensaje(dto);
+
+            return ReturnFormattedResponse(response);
+        }
+
+        [HttpPut, Route("UpdateHistoriaClinicaAuditoriaEstadoRecepcionMensaje")]
+        public async Task<IActionResult> UpdateHistoriaClinicaAuditoriaEstadoRecepcionMensaje(UpdateHistoriaClinicaAuditoriaEstadoRecepcionMensajeViewModel model)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelStateExtensions.GetErrorMessage(ModelState));
+
+            UpdateHistoriaClinicaAuditoriaEstadoRecepcionMensajeDto dto = new UpdateHistoriaClinicaAuditoriaEstadoRecepcionMensajeDto
+            {
+                NHIS_CM_ORDEN = model.NHIS_CM_ORDEN,
+                NUMERO_HISTORIA = model.NUMERO_HISTORIA,
+                SHIS_CM_ESTADO = model.SHIS_CM_ESTADO
+            };
+
+            var response = await _historiaClinicaService.UpdateHistoriaClinicaAuditoriaEstadoRecepcionMensaje(dto);
+
+            return ReturnFormattedResponse(response);
+        }
+
+        #endregion
     }
 }

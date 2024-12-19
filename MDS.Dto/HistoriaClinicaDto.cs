@@ -1322,6 +1322,47 @@ namespace MDS.Dto
     }
     /*FIN MAD*/
 
+
+
+
+    #region "Estados 0 - 2 - 3"
+    public class HistoriaClinicaMadAuditoriaEstadoDto
+    {
+        public int NUMEROHISTORIA { get; set; }
+        public string ESTADO { get; set; }
+        public string USUARIO { get; set; }
+        public string OBSERVACION { get; set; }
+        public string CAMBIO { get; set; }
+        public int USUARIO_CREACION { get; set; }
+        public int onRespuesta { get; set; }
+    }
+    public class HistoriaClinicaMadEstadoDto
+    {
+        public int CHIS_ID { get; set; }
+        public int CMED_ID { get; set; }
+        public string SHIS_COD_TIPO_DOCTOR { get; set; }
+        public DateTime DHIS_HORASGDR_ATE { get; set; }
+        public DateTime DHIS_FECASGDR_ATE { get; set; }
+        public string SHIS_USUASGDR_ATE { get; set; }
+        public int CESP_ID { get; set; }
+        public DateTime DHIS_FEC_ATE { get; set; }
+        public DateTime DHIS_HOR_ATE { get; set; }
+        public string SHIS_TMP_COD_TIT { get; set; }
+        public int NHIS_CM_TIEMPO { get; set; }
+        public string SHIS_COD_DR_SOLICITADO { get; set; }
+        public bool FHIS_FLAG_PROGRAMADA { get; set; }
+        public string SHIS_F_SOLDOCT { get; set; }
+        public string SHIS_F_PROG { get; set; }
+        public int NHIS_MOTIVO_TIPO_PROG { get; set; }
+        public int NHIS_CLASIFICACION_NEG_SOPORTE { get; set; }
+        public string SHIS_CM_ESTADO { get; set; }
+        public int NHIS_COD_ESTADO { get; set; }
+        public int NHIS_ORDEN { get; set; }
+        public string SHIS_CM_ESP_ANTERIOR { get; set; }
+        public string SHIS_CM_COD_DR_ANTERIOR { get; set; }
+        public string SHIS_CM_DR_ANTERIOR { get; set; }
+        public bool FHIS_FLG_VALIDACION_DIRECTA { get; set; }
+    }
     public class HistoriaClinicaMadAsignacionTiempoDoctorDto
     {
         public string SHIS_FORMAPAGO { get; set; }
@@ -1358,13 +1399,11 @@ namespace MDS.Dto
         public bool FHIS_CM_DATOS_COMPLETOS { get; set; }
         public string SUBI_PROVINCIA { get; set; }
     }
-    
     public class HistoriaClinicaMadAsignacionEspecialidadDto()
     {
         public int CESP_ID { get; set; }
         public string SESP_NOMBRE { get; set; }
     }
-
     public class HistoriaClinicaMadAsignacionMedicoDto
     {
         public int CMED_ID { get; set; }
@@ -1373,7 +1412,6 @@ namespace MDS.Dto
         public int CESP_ID { get; set; }
         public string SMEP_DESCRIPCION { get; set; }
     }
-
     public class HistoriaClinicaMadAsignacionEspecialidadMedicoDto
     {
         public int CMED_ID { get; set; }
@@ -1381,7 +1419,9 @@ namespace MDS.Dto
         public string SMED_TIPO_DOCTOR { get; set; }
     }
 
-    public class HistoriaClinicaMadAuditoriaEstadoDto
+    #endregion
+    #region "Estados 3 - 5"
+    public class HistoriaClinicaAuditoriaEstadoValidacionTiempoDto
     {
         public int NUMEROHISTORIA { get; set; }
         public string ESTADO { get; set; }
@@ -1389,35 +1429,16 @@ namespace MDS.Dto
         public string OBSERVACION { get; set; }
         public string CAMBIO { get; set; }
         public int USUARIO_CREACION { get; set; }
-        public int onRespuesta { get; set; }        
+        public int onRespuesta { get; set; }
     }
 
-    public class HistoriaClinicaMadEstadoDto
+    public class UpdateHistoriaClinicaAuditoriaEstadoValidacionTiempoDto
     {
-        public int CHIS_ID { get; set; }
-        public int CMED_ID { get; set; }
-        public string SHIS_COD_TIPO_DOCTOR { get; set; }
-        public DateTime DHIS_HORASGDR_ATE { get; set; }
-        public DateTime DHIS_FECASGDR_ATE { get; set; }
-        public string SHIS_USUASGDR_ATE { get; set; }
-        public int CESP_ID { get; set; }
-        public DateTime DHIS_FEC_ATE { get; set; }
-        public DateTime DHIS_HOR_ATE { get; set; }
-        public string SHIS_TMP_COD_TIT { get; set; }
-        public int NHIS_CM_TIEMPO { get; set; }
-        public string SHIS_COD_DR_SOLICITADO { get; set; }
-        public bool FHIS_FLAG_PROGRAMADA { get; set; }
-        public string SHIS_F_SOLDOCT { get; set; }
-        public string SHIS_F_PROG { get; set; }
-        public int NHIS_MOTIVO_TIPO_PROG { get; set; }
-        public int NHIS_CLASIFICACION_NEG_SOPORTE { get; set; }
+        public int NUMERO_HISTORIA { get; set; }
+        public DateTime DHIS_HRLLEDR { get; set; }
+        public DateTime DHIS_FECLLEDR { get; set; }
+        public bool FHIS_FLG_CM_NUEVA { get; set; }
         public string SHIS_CM_ESTADO { get; set; }
-        public int NHIS_COD_ESTADO { get; set; }
-        public int NHIS_ORDEN { get; set; }
-        public string SHIS_CM_ESP_ANTERIOR { get; set; }
-        public string SHIS_CM_COD_DR_ANTERIOR { get; set; }
-        public string SHIS_CM_DR_ANTERIOR { get; set; }
-        public bool FHIS_FLG_VALIDACION_DIRECTA { get; set; }
     }
 
     public class HistoriaClinicaMadValidacionTiempoDto
@@ -1435,4 +1456,41 @@ namespace MDS.Dto
         public string CONDUCTOR { get; set; }
 
     }
+
+    #endregion
+    #region "Estados 5 - 6"
+    public class AddHistoriaClinicaAuditoriaEstadoRecepcionMensajeDto
+    {
+        public int NUMERO_HISTORIA { get; set; }
+        public string ESTADO { get; set; }
+        public string USUARIO { get; set; }
+        public string OBSERVACION { get; set; }
+        public string CAMBIO { get; set; }
+        public int USUARIO_CREACION { get; set; }
+        public int onRespuesta { get; set; }
+    }
+
+    public class UpdateHistoriaClinicaAuditoriaEstadoRecepcionMensajeDto
+    {
+        public int NUMERO_HISTORIA { get; set; }
+        public string SHIS_CM_ESTADO { get; set; }
+        public int NHIS_CM_ORDEN { get; set; }
+    }
+
+    public class HistoriaClinicaMadConfirmarRecepcionMensajeDto
+    {
+        public int CHIS_ID { get; set; }
+        public string SHIS_CM_ESTADO { get; set; }
+        public string SHIS_F_PROG { get; set; }
+        public DateTime DHIS_HOR_ATE { get; set; }
+        public bool FHIS_FLG_REPROGRAMADA { get; set; }
+        public string PACIENTE { get; set; }
+        public string DISTRITO { get; set; }
+        public string DIRECCION { get; set; }
+        public string MEDICO { get; set; }
+        public string CONDUCTOR { get; set; }
+    }
+    #endregion
+
+
 }
