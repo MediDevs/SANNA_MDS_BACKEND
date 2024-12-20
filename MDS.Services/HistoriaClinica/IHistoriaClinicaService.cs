@@ -153,25 +153,55 @@ namespace MDS.Services.HistoriaClinica
         ///
 
         #region "Estado 0 - 2 - 3"
+
+        //By Julio Carrera
         Task<ServiceResponse> GetHistoriaClinica_Mad_Asignacion_Tiempo_Doctor(int codHistoriaClinica);
+
+        //By Julio Carrera
         Task<ServiceResponse> GetHistoriaClinica_Mad_Asignacion_By_Especialidad(string nombreEspecialidad, int personaId);
-        Task<ServiceResponse> GetHistoriaClinica_Mad_Asignacion_By_Medico(string usuario, int clasificacion, int codigoEspecialidad, int personaId, string nombreMedico);
+
+        //By Julio Carrera
+        Task<ServiceResponse> GetHistoriaClinica_Mad_Asignacion_By_Medico(/*string usuario, int clasificacion, int codigoEspecialidad, int personaId, */string nombreMedico);
+
+        //By Julio Carrera
         Task<ServiceResponse> GetHistoriaClinica_Mad_Asignacion_Especiliadad_Medico(int codigoMedico, int codigoEspecialidad);
+
+        //By Julio Carrera
         Task<ServiceResponse> AddHistoriaClinicaMadAuditoriaEstado(HistoriaClinicaMadAuditoriaEstadoDto dto);
+
+        //By Julio Carrera
         Task<ServiceResponse> UpdateHistoriaClinicaMadEstado(HistoriaClinicaMadEstadoDto dto);
+
+        //By Julio Carrera
         Task<ServiceResponse> GetHistoriaClinicaMadTipoProgramacion();
+
+        //By Julio Carrera
         Task<ServiceResponse> GetHistoriaClinicaMadSubTipoProgramacion();
         #endregion
 
         #region "Estado 3 - 5"
+
+        //By Julio Carrera
         Task<ServiceResponse> GetHistoriaClinicaMadValidacionTiempo(int codigoHistoria, int codigoMedico);
+
+        //By Julio Carrera
         Task<ServiceResponse> AddHistoriaClinicaAuditoriaEstadoValidacionTiempo(HistoriaClinicaAuditoriaEstadoValidacionTiempoDto dto);
+
+        //By Julio Carrera
         Task<ServiceResponse> UpdateHistoriaClinicaAuditoriaEstadoValidacionTiempo(UpdateHistoriaClinicaAuditoriaEstadoValidacionTiempoDto dto);
+
+        //By Julio Carrera
         #endregion
 
         #region "Estado 5 - 6"
+
+        //By Julio Carrera
         Task<ServiceResponse> GetHistoriaClinicaMadConfirmarRecepcionMensaje(int numeroHistoria);
+
+        //By Julio Carrera
         Task<ServiceResponse> AddHistoriaClinicaAuditoriaEstadoRecepcionMensaje(AddHistoriaClinicaAuditoriaEstadoRecepcionMensajeDto dto);
+
+        //By Julio Carrera
         Task<ServiceResponse> UpdateHistoriaClinicaAuditoriaEstadoRecepcionMensaje(UpdateHistoriaClinicaAuditoriaEstadoRecepcionMensajeDto dto);
 
         #endregion

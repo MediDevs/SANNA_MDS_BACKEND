@@ -120,7 +120,7 @@ namespace MDS.Api.Models
 
         public string f_soldoct { get; set; }       //SHIS_F_SOLDOCT
 
-        public int motivo_tipo_prog { get; set; }   //@NHIS_MOTIVO_TIPO_PROG
+        public int motivo_tipo_prog { get; set; }   //NHIS_MOTIVO_TIPO_PROG
 
         public string observacion { get; set; }     //SHIS_OBSERVACION
 
@@ -402,30 +402,30 @@ namespace MDS.Api.Models
     }
     public class UpdateHistoriaClinicaAuditoriaEstado
     {
-        public int @CHIS_ID { get; set; }
-        public int @CMED_ID { get; set; }
-        public string @SHIS_COD_TIPO_DOCTOR { get; set; }
-        public DateTime @DHIS_HORASGDR_ATE { get; set; }
-        public DateTime @DHIS_FECASGDR_ATE { get; set; }
-        public string @SHIS_USUASGDR_ATE { get; set; }
-        public int @CESP_ID { get; set; }
-        public DateTime @DHIS_FEC_ATE { get; set; }
-        public DateTime @DHIS_HOR_ATE { get; set; }
-        public string @SHIS_TMP_COD_TIT { get; set; }
-        public int @NHIS_CM_TIEMPO { get; set; }
-        public string @SHIS_COD_DR_SOLICITADO { get; set; }
-        public bool @FHIS_FLAG_PROGRAMADA { get; set; }
-        public string @SHIS_F_SOLDOCT { get; set; }
-        public string @SHIS_F_PROG { get; set; }
-        public int @NHIS_MOTIVO_TIPO_PROG { get; set; }
-        public int @NHIS_CLASIFICACION_NEG_SOPORTE { get; set; }
-        public string @SHIS_CM_ESTADO { get; set; }
-        public int @NHIS_COD_ESTADO { get; set; }
-        public int @NHIS_ORDEN { get; set; }
-        public string @SHIS_CM_ESP_ANTERIOR { get; set; }
-        public string @SHIS_CM_COD_DR_ANTERIOR { get; set; }
-        public string @SHIS_CM_DR_ANTERIOR { get; set; }
-        public bool @FHIS_FLG_VALIDACION_DIRECTA { get; set; }
+        public int CHIS_ID { get; set; }
+        public int CMED_ID { get; set; }
+        public string SHIS_COD_TIPO_DOCTOR { get; set; }
+        public DateTime DHIS_HORASGDR_ATE { get; set; }
+        public DateTime DHIS_FECASGDR_ATE { get; set; }
+        public string SHIS_USUASGDR_ATE { get; set; }
+        public int CESP_ID { get; set; }
+        public DateTime DHIS_FEC_ATE { get; set; }
+        public DateTime DHIS_HOR_ATE { get; set; }
+        public string? SHIS_TMP_COD_TIT { get; set; }
+        public int NHIS_CM_TIEMPO { get; set; }
+        public string? SHIS_COD_DR_SOLICITADO { get; set; }
+        public bool FHIS_FLAG_PROGRAMADA { get; set; }
+        public string SHIS_F_SOLDOCT { get; set; }
+        public string SHIS_F_PROG { get; set; }
+        public int NHIS_MOTIVO_TIPO_PROG { get; set; }
+        public int NHIS_CLASIFICACION_NEG_SOPORTE { get; set; }
+        public string SHIS_CM_ESTADO { get; set; }
+        public int NHIS_COD_ESTADO { get; set; }
+        public int NHIS_ORDEN { get; set; }
+        public string SHIS_CM_ESP_ANTERIOR { get; set; }
+        public string SHIS_CM_COD_DR_ANTERIOR { get; set; }
+        public string SHIS_CM_DR_ANTERIOR { get; set; }
+        public bool FHIS_FLG_VALIDACION_DIRECTA { get; set; }
     }
     #endregion
 

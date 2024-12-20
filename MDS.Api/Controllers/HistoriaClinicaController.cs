@@ -1229,18 +1229,8 @@ namespace MDS.Api.Controllers
 
         //////////////////          FIN SERVICIO AMBULANCIA          //////////////////
 
-
-
-
-
-
-
-
-
-
-
-
         #region "Estado 0 - 2 - 3"
+        //By Julio Carrera
         [HttpGet, Route("GetHistoriaClinica_Mad_Asignacion_Tiempo_Doctor")]
         public async Task<IActionResult> GetHistoriaClinica_Mad_Asignacion_Tiempo_Doctor(int codHistoriaClinica)
         {
@@ -1249,6 +1239,7 @@ namespace MDS.Api.Controllers
             return ReturnFormattedResponse(response);
         }
 
+        //By Julio Carrera
         [HttpGet, Route("GetHistoriaClinica_Mad_Asignacion_By_Especialidad")]
         public async Task<IActionResult> GetHistoriaClinica_Mad_Asignacion_By_Especialidad(string nombreEspecialidad, int personaId)
         {
@@ -1257,14 +1248,16 @@ namespace MDS.Api.Controllers
             return ReturnFormattedResponse(response);
         }
 
+        //By Julio Carrera
         [HttpGet, Route("GetHistoriaClinica_Mad_Asignacion_By_Medico")]
-        public async Task<IActionResult> GetHistoriaClinica_Mad_Asignacion_By_Medico(string usuario, int clasificacion, int codigoEspecialidad, int personaId, string nombreMedico)
+        public async Task<IActionResult> GetHistoriaClinica_Mad_Asignacion_By_Medico(/*string usuario, int clasificacion, int codigoEspecialidad, int personaId,*/ string nombreMedico)
         {
-            var response = await _historiaClinicaService.GetHistoriaClinica_Mad_Asignacion_By_Medico(usuario, clasificacion, codigoEspecialidad, personaId, nombreMedico);
+            var response = await _historiaClinicaService.GetHistoriaClinica_Mad_Asignacion_By_Medico(/*usuario, clasificacion, codigoEspecialidad, personaId,*/ nombreMedico);
 
             return ReturnFormattedResponse(response);
         }
 
+        //By Julio Carrera
         [HttpGet, Route("GetHistoriaClinica_Mad_Asignacion_Especiliadad_Medico")]
         public async Task<IActionResult> GetHistoriaClinica_Mad_Asignacion_Especiliadad_Medico(int codigoMedico, int codigoEspecialidad)
         {
@@ -1273,6 +1266,7 @@ namespace MDS.Api.Controllers
             return ReturnFormattedResponse(response);
         }
 
+        //By Julio Carrera
         [HttpPost, Route("AddHistoriaClinicaMadAuditoriaEstado")]
         public async Task<IActionResult> AddHistoriaClinicaMadAuditoriaEstado(AddHistoriaClinicaMadAuditoriaEstadoViewModel model)
         {
@@ -1294,6 +1288,7 @@ namespace MDS.Api.Controllers
             return ReturnFormattedResponse(response);
         }
 
+        //By Julio Carrera
         [HttpPut, Route("UpdateHistoriaClinicaMadEstado")]
         public async Task<IActionResult> UpdateHistoriaClinicaMadEstado(UpdateHistoriaClinicaAuditoriaEstado model)
         {
@@ -1333,6 +1328,7 @@ namespace MDS.Api.Controllers
             return ReturnFormattedResponse(response);
         }
 
+        //By Julio Carrera
         [HttpGet, Route("GetHistoria_Clinica_Mad_SubTipo_Programacion")]
         public async Task<IActionResult> GetHistoria_Clinica_Mad_SubTipo_Programacion()
         {
@@ -1341,6 +1337,7 @@ namespace MDS.Api.Controllers
             return ReturnFormattedResponse(response);
         }
 
+        //By Julio Carrera
         [HttpGet, Route("GetHistoria_Clinica_Mad_Tipo_Programacion")]
         public async Task<IActionResult> GetHistoria_Clinica_Mad_Tipo_Programacion()
         {
@@ -1351,7 +1348,7 @@ namespace MDS.Api.Controllers
         #endregion
 
         #region "Estado 3 - 5"
-
+        //By Julio Carrera
         [HttpGet, Route("GetHistoriaClinica_Mad_Validacion_Tiempo")]
         public async Task<IActionResult> GetHistoriaClinica_Mad_Validacion_Tiempo(int codigoHistoria, int codigoMedico)
         {
@@ -1360,6 +1357,7 @@ namespace MDS.Api.Controllers
             return ReturnFormattedResponse(response);
         }
 
+        //By Julio Carrera
         [HttpPost, Route("AddHistoriaClinicaAuditoriaEstadoValidacionTiempo")]
         public async Task<IActionResult> AddHistoriaClinicaAuditoriaEstadoValidacionTiempo(AddHistoriaClinicaAuditoriaEstadoValidacionTiempoViewModel model)
         {
@@ -1381,6 +1379,7 @@ namespace MDS.Api.Controllers
             return ReturnFormattedResponse(response);
         }
 
+        //By Julio Carrera
         [HttpPut, Route("UpdateHistoriaClinicaAuditoriaEstadoValidacionTiempo")]
         public async Task<IActionResult> UpdateHistoriaClinicaAuditoriaEstadoValidacionTiempo(UpdateHistoriaClinicaAuditoriaEstadoValidacionTiempoViewModel model)
         {
@@ -1400,11 +1399,10 @@ namespace MDS.Api.Controllers
 
             return ReturnFormattedResponse(response);
         }
-
         #endregion
 
         #region "Estado 5 - 6"
-
+        //By Julio Carrera
         [HttpGet, Route("GetHistoriaClinicaMadConfirmarRecepcionMensaje")]
         public async Task<IActionResult> GetHistoriaClinicaMadConfirmarRecepcionMensaje(int numeroHistoria)
         {
@@ -1413,6 +1411,7 @@ namespace MDS.Api.Controllers
             return ReturnFormattedResponse(response);
         }
 
+        //By Julio Carrera
         [HttpPost, Route("AddHistoriaClinicaAuditoriaEstadoRecepcionMensaje")]
         public async Task<IActionResult> AddHistoriaClinicaAuditoriaEstadoRecepcionMensaje(AddHistoriaClinicaAuditoriaEstadoRecepcionMensajeViewModel model)
         {
@@ -1434,6 +1433,7 @@ namespace MDS.Api.Controllers
             return ReturnFormattedResponse(response);
         }
 
+        //By Julio Carrera
         [HttpPut, Route("UpdateHistoriaClinicaAuditoriaEstadoRecepcionMensaje")]
         public async Task<IActionResult> UpdateHistoriaClinicaAuditoriaEstadoRecepcionMensaje(UpdateHistoriaClinicaAuditoriaEstadoRecepcionMensajeViewModel model)
         {
@@ -1454,7 +1454,6 @@ namespace MDS.Api.Controllers
 
         #endregion
 
-
         //ESTADO 6 - 7
         //By Henrry Torres
         //6 - 7 (API 1)
@@ -1467,6 +1466,7 @@ namespace MDS.Api.Controllers
         }
 
         //6 - 7 (API 2)
+        //By Henrry Torres
         [HttpGet, Route("GetHistoriaClinica_Mad_Estado_7")]
         public async Task<IActionResult> GetHistoriaClinicaMadEstado7(int codigoMedico, DateTime fechaLlegada, DateTime horaLlegada)
         {
@@ -1476,6 +1476,7 @@ namespace MDS.Api.Controllers
         }
 
         //6 - 7 (API 3)
+        //By Henrry Torres
         [HttpPost, Route("AddHistoriaClinica_Mad_Auditoria_Confirmar_Llegada_Medico")]
         public async Task<IActionResult> AddHistoriaClinicaMadAuditoriaConfirmarLlegadaMedico(AddHistoriaClinicaMadAuditoriaEstadoViewModel model)
         {
@@ -1583,6 +1584,7 @@ namespace MDS.Api.Controllers
         //Aun esta en análisis
 
         //7 - 8 (API 5)
+        //By Henrry Torres
         [HttpDelete, Route("DeleteHistoriaClinica_Otros_Servicios_Fin_Consulta_Medica")]
         public async Task<IActionResult> DeleteHistoriaClinicaOtrosServiciosFinConsultaMedica(HistoriaClinicaMadAuditoriaEstadoFinConsultaViewModel model)
         {
@@ -1600,6 +1602,7 @@ namespace MDS.Api.Controllers
         }
 
         //7 - 8 (API 6)
+        //By Henrry Torres
         [HttpPost, Route("AddHistoriaClinica_Mad_Estado_Fin_Consulta_Medica")]
         public async Task<IActionResult> AddHistoriaClinicaMadEstadoFinConsultaMedica(HistoriaClinicaEstadoFinConsultaViewModel model)
         {
@@ -1655,6 +1658,7 @@ namespace MDS.Api.Controllers
         }
 
         //7 - 8 (API 7)
+        //By Henrry Torres
         [HttpPost, Route("AddHistoriaClinica_Mad_Auditoria_Estado_Fin_Consulta_Medica")]
         public async Task<IActionResult> AddHistoriaClinicaMadAuditoriaEstadoFinConsultaMedica(AddHistoriaClinicaMadAuditoriaEstadoViewModel model)
         {

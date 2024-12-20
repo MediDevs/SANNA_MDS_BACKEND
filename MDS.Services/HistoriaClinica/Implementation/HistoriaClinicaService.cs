@@ -2107,6 +2107,7 @@ namespace MDS.Services.HistoriaClinica.Implementation
 
         #region "Estado 0 - 2 - 3"
 
+        //By Julio Carrera
         public async Task<ServiceResponse> GetHistoriaClinica_Mad_Asignacion_Tiempo_Doctor(int codHistoriaClinica)
         {
             try
@@ -2171,6 +2172,7 @@ namespace MDS.Services.HistoriaClinica.Implementation
             }
         }
 
+        //By Julio Carrera
         public async Task<ServiceResponse> GetHistoriaClinica_Mad_Asignacion_By_Especialidad(string nombreEspecialidad, int personaId)
         {
             try
@@ -2205,17 +2207,18 @@ namespace MDS.Services.HistoriaClinica.Implementation
             }
         }
 
-        public async Task<ServiceResponse> GetHistoriaClinica_Mad_Asignacion_By_Medico(string usuario, int clasificacion, int codigoEspecialidad, int personaId, string nombreMedico)
+        //By Julio Carrera
+        public async Task<ServiceResponse> GetHistoriaClinica_Mad_Asignacion_By_Medico(/*string usuario, int clasificacion, int codigoEspecialidad, int personaId,*/ string nombreMedico)
         {
             try
             {
                 SqlParameter[] parameters =
                 {
-                    new SqlParameter("@USUARIO", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = usuario},
+                    /*new SqlParameter("@USUARIO", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = usuario},
                     new SqlParameter("@CLASIFICACION", SqlDbType.Int) {Direction = ParameterDirection.Input, Value = clasificacion},
                     new SqlParameter("@COD_ESP", SqlDbType.Int) {Direction = ParameterDirection.Input, Value = codigoEspecialidad},
-                    new SqlParameter("@CPER_ID", SqlDbType.Int) {Direction = ParameterDirection.Input, Value = personaId},
-                    new SqlParameter("@NOMBRES_MEDICO", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = nombreMedico}
+                    new SqlParameter("@CPER_ID", SqlDbType.Int) {Direction = ParameterDirection.Input, Value = personaId},*/
+                    new SqlParameter("@MEDICO", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = nombreMedico}
                 };
 
                 List<DbContext.Entities.HistoriaClinicaMadAsignacionMedico> historiasClinicas = new List<DbContext.Entities.HistoriaClinicaMadAsignacionMedico>();
@@ -2226,11 +2229,11 @@ namespace MDS.Services.HistoriaClinica.Implementation
 
                 listHistoriasClinicas = historiasClinicas.Select(s => new HistoriaClinicaMadAsignacionMedicoDto
                 {
-                    CESP_ID = s.CESP_ID,
+                    /*CESP_ID = s.CESP_ID,
+                    SMED_TIPO_DOCTOR = s.SMED_TIPO_DOCTOR,
+                    SMEP_DESCRIPCION = s.SMEP_DESCRIPCION,*/
                     CMED_ID = s.CMED_ID,
                     MEDICO = s.MEDICO,
-                    SMED_TIPO_DOCTOR = s.SMED_TIPO_DOCTOR,
-                    SMEP_DESCRIPCION = s.SMEP_DESCRIPCION
                 }).ToList();
 
                 if (!historiasClinicas.Any())
@@ -2244,6 +2247,7 @@ namespace MDS.Services.HistoriaClinica.Implementation
             }
         }
 
+        //By Julio Carrera
         public async Task<ServiceResponse> GetHistoriaClinica_Mad_Asignacion_Especiliadad_Medico(int codigoMedico, int codigoEspecialidad)
         {
             try
@@ -2278,6 +2282,7 @@ namespace MDS.Services.HistoriaClinica.Implementation
             }
         }
 
+        //By Julio Carrera
         public async Task<ServiceResponse> AddHistoriaClinicaMadAuditoriaEstado(HistoriaClinicaMadAuditoriaEstadoDto dto)
         {
             try
@@ -2308,6 +2313,7 @@ namespace MDS.Services.HistoriaClinica.Implementation
             }
         }
 
+        //By Julio Carrera
         public async Task<ServiceResponse> UpdateHistoriaClinicaMadEstado(HistoriaClinicaMadEstadoDto dto)
         {
             try
@@ -2337,8 +2343,9 @@ namespace MDS.Services.HistoriaClinica.Implementation
                     new SqlParameter("@SHIS_CM_ESP_ANTERIOR", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = dto.SHIS_CM_ESP_ANTERIOR },
                     new SqlParameter("@SHIS_CM_COD_DR_ANTERIOR", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = dto.SHIS_CM_COD_DR_ANTERIOR },
                     new SqlParameter("@SHIS_CM_DR_ANTERIOR", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = dto.SHIS_CM_DR_ANTERIOR },
-                    new SqlParameter("@FHIS_FLG_VALIDACION_DIRECTA", SqlDbType.Bit) {Direction = ParameterDirection.Input, Value = dto.FHIS_FLG_VALIDACION_DIRECTA }
-                    //new SqlParameter("@onRespuestaSeguimiento", SqlDbType.Int) {Direction = ParameterDirection.Output}
+                    new SqlParameter("@FHIS_FLG_VALIDACION_DIRECTA", SqlDbType.Bit) {Direction = ParameterDirection.Input, Value = dto.FHIS_FLG_VALIDACION_DIRECTA },
+                    
+                    new SqlParameter("@onRespuesta", SqlDbType.Int) {Direction = ParameterDirection.Output}
                 };
 
                 int response = await _uow.ExecuteStoredProcReturnValue("SPRMDS_UPDATE_HISTORIA_CLINICA_AUDITORIA_ESTADO", parameters);
@@ -2353,6 +2360,7 @@ namespace MDS.Services.HistoriaClinica.Implementation
             }
         }
 
+        //By Julio Carrera
         public async Task<ServiceResponse> GetHistoriaClinicaMadTipoProgramacion()
         {
             try
@@ -2381,6 +2389,7 @@ namespace MDS.Services.HistoriaClinica.Implementation
             }
         }
 
+        //By Julio Carrera
         public async Task<ServiceResponse> GetHistoriaClinicaMadSubTipoProgramacion()
         {
             try
@@ -2408,10 +2417,10 @@ namespace MDS.Services.HistoriaClinica.Implementation
                 return ServiceResponse.Return500(e);
             }
         }
-
         #endregion
 
         #region "Estado 3 - 5"
+        //By Julio Carrera
         public async Task<ServiceResponse> GetHistoriaClinicaMadValidacionTiempo(int codigoHistoria, int codigoMedico)
         {
             try
@@ -2454,6 +2463,7 @@ namespace MDS.Services.HistoriaClinica.Implementation
             }
         }
 
+        //By Julio Carrera
         public async Task<ServiceResponse> AddHistoriaClinicaAuditoriaEstadoValidacionTiempo(HistoriaClinicaAuditoriaEstadoValidacionTiempoDto dto)
         {
             try
@@ -2483,6 +2493,8 @@ namespace MDS.Services.HistoriaClinica.Implementation
                 return ServiceResponse.Return500(e);
             }
         }
+
+        //By Julio Carrera
         public async Task<ServiceResponse> UpdateHistoriaClinicaAuditoriaEstadoValidacionTiempo(UpdateHistoriaClinicaAuditoriaEstadoValidacionTiempoDto dto)
         {
             try
@@ -2508,10 +2520,10 @@ namespace MDS.Services.HistoriaClinica.Implementation
                 return ServiceResponse.Return500(e);
             }
         }
-
         #endregion
 
         #region "Estado 5 - 6"
+        //By Julio Carrera
         public async Task<ServiceResponse> GetHistoriaClinicaMadConfirmarRecepcionMensaje(int numeroHistoria)
         {
             try
@@ -2552,6 +2564,7 @@ namespace MDS.Services.HistoriaClinica.Implementation
             }
         }
 
+        //By Julio Carrera
         public async Task<ServiceResponse> AddHistoriaClinicaAuditoriaEstadoRecepcionMensaje(AddHistoriaClinicaAuditoriaEstadoRecepcionMensajeDto dto)
         {
             try
@@ -2582,6 +2595,8 @@ namespace MDS.Services.HistoriaClinica.Implementation
             }
         }
 
+        //By Julio Carrera
+
         public async Task<ServiceResponse> UpdateHistoriaClinicaAuditoriaEstadoRecepcionMensaje(UpdateHistoriaClinicaAuditoriaEstadoRecepcionMensajeDto dto)
         {
             try
@@ -2605,7 +2620,6 @@ namespace MDS.Services.HistoriaClinica.Implementation
                 return ServiceResponse.Return500(e);
             }
         }
-
         #endregion
 
         //ESTADO 6 - 7

@@ -2122,9 +2122,9 @@ namespace MDS.DbContext.Entities
     {
         public int CMED_ID { get; set; }
         public string MEDICO { get; set; }
-        public string SMED_TIPO_DOCTOR { get; set; }
+        /*public string SMED_TIPO_DOCTOR { get; set; }
         public int CESP_ID { get; set; }
-        public string SMEP_DESCRIPCION { get; set; }
+        public string SMEP_DESCRIPCION { get; set; }*/
     }
 
     public class HistoriaClinicaMadAsignacionEspecialidadMedico
