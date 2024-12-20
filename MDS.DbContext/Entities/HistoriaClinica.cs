@@ -2155,18 +2155,6 @@ namespace MDS.DbContext.Entities
         public String CELULAR_CONDUCTOR { get; set; }
         
 
-        //public string SHIS_CM_ESTADO { get; set; }
-        //public int NHIS_CLASIFICACION_PAC { get; set; }
-        //public string MEDICO { get; set; }
-        //public string SPER_TELEFONO_CELULAR { get; set; }
-        //public string SMED_BEEPER { get; set; }
-        //public string DIRECCION { get; set; }
-        //public string SDIR_NRO_LOTE { get; set; }
-        //public string SDIR_INTERIOR { get; set; }
-        //public string SDIR_URBANIZACION { get; set; }
-        //public string SDIR_REFERENCIA { get; set; }
-        //public string CONDUCTOR { get; set; }
-
     }
     #endregion
 

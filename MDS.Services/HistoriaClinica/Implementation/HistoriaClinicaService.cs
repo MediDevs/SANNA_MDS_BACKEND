@@ -2454,17 +2454,7 @@ namespace MDS.Services.HistoriaClinica.Implementation
                     conductor = s.CONDUCTOR,
                     celular_medico = s.CELULAR_MEDICO,
                     celular_conductor = s.CELULAR_CONDUCTOR
-        //BEEPER = s.SMED_BEEPER,
-        //CLASIFICACION_PAC = s.NHIS_CLASIFICACION_PAC,
-        //CM_ESTADO = s.SHIS_CM_ESTADO,
-        //CONDUCTOR = s.CONDUCTOR,
-        //DIRECCION = s.DIRECCION,
-        //INTERIOR = s.SDIR_INTERIOR,
-        //MEDICO = s.MEDICO,
-        //NRO_LOTE = s.SDIR_NRO_LOTE,
-        //REFERENCIA = s.SDIR_REFERENCIA,
-        //TELEFONO_CELULAR = s.SPER_TELEFONO_CELULAR,
-        //URBANIZACION = s.SDIR_URBANIZACION
+
     }).ToList();
 
                 if (!historiasClinicas.Any())

@@ -1459,17 +1459,6 @@ namespace MDS.Dto
         public String celular_medico { get; set; }
         public String celular_conductor { get; set; }
 
-        //public string CM_ESTADO { get; set; }
-        //public int CLASIFICACION_PAC { get; set; }
-        //public string MEDICO { get; set; }
-        //public string TELEFONO_CELULAR { get; set; }
-        //public string BEEPER { get; set; }
-        //public string DIRECCION { get; set; }
-        //public string NRO_LOTE { get; set; }
-        //public string INTERIOR { get; set; }
-        //public string URBANIZACION { get; set; }
-        //public string REFERENCIA { get; set; }
-        //public string CONDUCTOR { get; set; }
 
     }
 
