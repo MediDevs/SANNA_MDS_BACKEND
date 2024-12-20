@@ -2421,14 +2421,14 @@ namespace MDS.Services.HistoriaClinica.Implementation
 
         #region "Estado 3 - 5"
         //By Julio Carrera
-        public async Task<ServiceResponse> GetHistoriaClinicaMadValidacionTiempo(int codigoHistoria, int codigoMedico)
+        public async Task<ServiceResponse> GetHistoriaClinicaMadValidacionTiempo(int codigoHistoria)
         {
             try
             {
                 SqlParameter[] parameters =
                 {
-                    new SqlParameter("@CHIS_ID", SqlDbType.Int) {Direction = ParameterDirection.Input, Value = codigoHistoria},
-                    new SqlParameter("@CMED_ID", SqlDbType.Int) {Direction = ParameterDirection.Input, Value = codigoMedico}
+                    new SqlParameter("@NUMERO_HISTORIA", SqlDbType.Int) {Direction = ParameterDirection.Input, Value = codigoHistoria},
+                    //new SqlParameter("@CODIGO_MEDICO", SqlDbType.Int) {Direction = ParameterDirection.Input, Value = codigoMedico}
                 };
 
                 List<DbContext.Entities.HistoriaClinicaMadValidacionTiempo> historiasClinicas = new List<DbContext.Entities.HistoriaClinicaMadValidacionTiempo>();
@@ -2439,18 +2439,33 @@ namespace MDS.Services.HistoriaClinica.Implementation
 
                 listHistoriasClinicas = historiasClinicas.Select(s => new HistoriaClinicaMadValidacionTiempoDto
                 {
-                    BEEPER = s.SMED_BEEPER,
-                    CLASIFICACION_PAC = s.NHIS_CLASIFICACION_PAC,
-                    CM_ESTADO = s.SHIS_CM_ESTADO,
-                    CONDUCTOR = s.CONDUCTOR,
-                    DIRECCION = s.DIRECCION,
-                    INTERIOR = s.SDIR_INTERIOR,
-                    MEDICO = s.MEDICO,
-                    NRO_LOTE = s.SDIR_NRO_LOTE,
-                    REFERENCIA = s.SDIR_REFERENCIA,
-                    TELEFONO_CELULAR = s.SPER_TELEFONO_CELULAR,
-                    URBANIZACION = s.SDIR_URBANIZACION
-                }).ToList();
+                    
+                    numero_historia = s.CHIS_ID,
+                    estado = s.SHIS_CM_ESTADO,
+                    clasificacion_pac = s.NHIS_CLASIFICACION_PAC,
+                    paciente = s.PACIENTE,
+                    distrito = s.DISTRITO,
+                    direccion = s.DIRECCION,
+                    numero_lote = s.SDIR_NRO_LOTE,
+                    numero_interior = s.SDIR_INTERIOR,
+                    urbanizacion = s.SDIR_URBANIZACION,
+                    referencia = s.SDIR_REFERENCIA,
+                    medico = s.MEDICO,
+                    conductor = s.CONDUCTOR,
+                    celular_medico = s.CELULAR_MEDICO,
+                    celular_conductor = s.CELULAR_CONDUCTOR
+        //BEEPER = s.SMED_BEEPER,
+        //CLASIFICACION_PAC = s.NHIS_CLASIFICACION_PAC,
+        //CM_ESTADO = s.SHIS_CM_ESTADO,
+        //CONDUCTOR = s.CONDUCTOR,
+        //DIRECCION = s.DIRECCION,
+        //INTERIOR = s.SDIR_INTERIOR,
+        //MEDICO = s.MEDICO,
+        //NRO_LOTE = s.SDIR_NRO_LOTE,
+        //REFERENCIA = s.SDIR_REFERENCIA,
+        //TELEFONO_CELULAR = s.SPER_TELEFONO_CELULAR,
+        //URBANIZACION = s.SDIR_URBANIZACION
+    }).ToList();
 
                 if (!historiasClinicas.Any())
                     return ServiceResponse.ReturnResultWith204();

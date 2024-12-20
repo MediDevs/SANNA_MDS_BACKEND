@@ -182,7 +182,7 @@ namespace MDS.Services.HistoriaClinica
         #region "Estado 3 - 5"
 
         //By Julio Carrera
-        Task<ServiceResponse> GetHistoriaClinicaMadValidacionTiempo(int codigoHistoria, int codigoMedico);
+        Task<ServiceResponse> GetHistoriaClinicaMadValidacionTiempo(int codigoHistoria);
 
         //By Julio Carrera
         Task<ServiceResponse> AddHistoriaClinicaAuditoriaEstadoValidacionTiempo(HistoriaClinicaAuditoriaEstadoValidacionTiempoDto dto);

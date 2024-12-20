@@ -1350,9 +1350,9 @@ namespace MDS.Api.Controllers
         #region "Estado 3 - 5"
         //By Julio Carrera
         [HttpGet, Route("GetHistoriaClinica_Mad_Validacion_Tiempo")]
-        public async Task<IActionResult> GetHistoriaClinica_Mad_Validacion_Tiempo(int codigoHistoria, int codigoMedico)
+        public async Task<IActionResult> GetHistoriaClinica_Mad_Validacion_Tiempo(int codigoHistoria)
         {
-            var response = await _historiaClinicaService.GetHistoriaClinicaMadValidacionTiempo(codigoHistoria, codigoMedico);
+            var response = await _historiaClinicaService.GetHistoriaClinicaMadValidacionTiempo(codigoHistoria);
 
             return ReturnFormattedResponse(response);
         }

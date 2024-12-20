@@ -2138,17 +2138,34 @@ namespace MDS.DbContext.Entities
     #region "Estado 3 - 5"
     public class HistoriaClinicaMadValidacionTiempo
     {
-        public string SHIS_CM_ESTADO { get; set; }
+
+        public int CHIS_ID { get; set; }
+        public String SHIS_CM_ESTADO { get; set; }
         public int NHIS_CLASIFICACION_PAC { get; set; }
+        public String PACIENTE { get; set; }
+        public String DISTRITO { get; set; }
+        public String DIRECCION { get; set; }
+        public String SDIR_NRO_LOTE { get; set; }
+        public String SDIR_INTERIOR { get; set; }
+        public String SDIR_URBANIZACION { get; set; }
+        public String SDIR_REFERENCIA { get; set; }
         public string MEDICO { get; set; }
-        public string SPER_TELEFONO_CELULAR { get; set; }
-        public string SMED_BEEPER { get; set; }
-        public string DIRECCION { get; set; }
-        public string SDIR_NRO_LOTE { get; set; }
-        public string SDIR_INTERIOR { get; set; }
-        public string SDIR_URBANIZACION { get; set; }
-        public string SDIR_REFERENCIA { get; set; }
         public string CONDUCTOR { get; set; }
+        public String CELULAR_MEDICO { get; set; }
+        public String CELULAR_CONDUCTOR { get; set; }
+        
+
+        //public string SHIS_CM_ESTADO { get; set; }
+        //public int NHIS_CLASIFICACION_PAC { get; set; }
+        //public string MEDICO { get; set; }
+        //public string SPER_TELEFONO_CELULAR { get; set; }
+        //public string SMED_BEEPER { get; set; }
+        //public string DIRECCION { get; set; }
+        //public string SDIR_NRO_LOTE { get; set; }
+        //public string SDIR_INTERIOR { get; set; }
+        //public string SDIR_URBANIZACION { get; set; }
+        //public string SDIR_REFERENCIA { get; set; }
+        //public string CONDUCTOR { get; set; }
 
     }
     #endregion

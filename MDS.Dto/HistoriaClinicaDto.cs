@@ -1443,17 +1443,33 @@ namespace MDS.Dto
 
     public class HistoriaClinicaMadValidacionTiempoDto
     {
-        public string CM_ESTADO { get; set; }
-        public int CLASIFICACION_PAC { get; set; }
-        public string MEDICO { get; set; }
-        public string TELEFONO_CELULAR { get; set; }
-        public string BEEPER { get; set; }
-        public string DIRECCION { get; set; }
-        public string NRO_LOTE { get; set; }
-        public string INTERIOR { get; set; }
-        public string URBANIZACION { get; set; }
-        public string REFERENCIA { get; set; }
-        public string CONDUCTOR { get; set; }
+        public int numero_historia { get; set; }
+        public String estado { get; set; }
+        public int clasificacion_pac { get; set; }
+        public String paciente { get; set; }
+        public String distrito { get; set; }
+        public String direccion { get; set; }
+        public String numero_lote { get; set; }
+        public String numero_interior { get; set; }
+        public String urbanizacion { get; set; }
+        public String referencia { get; set; }
+
+        public string medico { get; set; }
+        public string conductor { get; set; }
+        public String celular_medico { get; set; }
+        public String celular_conductor { get; set; }
+
+        //public string CM_ESTADO { get; set; }
+        //public int CLASIFICACION_PAC { get; set; }
+        //public string MEDICO { get; set; }
+        //public string TELEFONO_CELULAR { get; set; }
+        //public string BEEPER { get; set; }
+        //public string DIRECCION { get; set; }
+        //public string NRO_LOTE { get; set; }
+        //public string INTERIOR { get; set; }
+        //public string URBANIZACION { get; set; }
+        //public string REFERENCIA { get; set; }
+        //public string CONDUCTOR { get; set; }
 
     }
 
