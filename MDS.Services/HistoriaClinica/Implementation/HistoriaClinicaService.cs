@@ -2506,12 +2506,13 @@ namespace MDS.Services.HistoriaClinica.Implementation
             {
                 SqlParameter[] parameters =
                 {
-                    new SqlParameter("@NUMERO_HISTORIA", SqlDbType.Int) {Direction = ParameterDirection.Input, Value = dto.NUMERO_HISTORIA },
-                    new SqlParameter("@DHIS_HRLLEDR", SqlDbType.Int) {Direction = ParameterDirection.Input, Value = dto.DHIS_HRLLEDR },
-                    new SqlParameter("@DHIS_FECLLEDR", SqlDbType.Int) {Direction = ParameterDirection.Input, Value = dto.DHIS_FECLLEDR },
-                    new SqlParameter("@FHIS_FLG_CM_NUEVA", SqlDbType.Int) {Direction = ParameterDirection.Input, Value = dto.FHIS_FLG_CM_NUEVA },
-                    new SqlParameter("@SHIS_CM_ESTADO", SqlDbType.Int) {Direction = ParameterDirection.Input, Value = dto.SHIS_CM_ESTADO }
-                    //new SqlParameter("@onRespuestaSeguimiento", SqlDbType.Int) {Direction = ParameterDirection.Output}
+                    new SqlParameter("@NUMERO_HISTORIA", SqlDbType.Int) {Direction = ParameterDirection.Input, Value = dto.numerO_HISTORIA },
+                    new SqlParameter("@DHIS_HRLLEDR", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = dto.dhiS_HRLLEDR },
+                    new SqlParameter("@DHIS_FECLLEDR", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = dto.dhiS_FECLLEDR },
+                    new SqlParameter("@FHIS_FLG_CM_NUEVA", SqlDbType.Int) {Direction = ParameterDirection.Input, Value = dto.fhiS_FLG_CM_NUEVA },
+                    new SqlParameter("@SHIS_CM_ESTADO", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = dto.shiS_CM_ESTADO },
+                    
+                    new SqlParameter("@onRespuesta", SqlDbType.Int) {Direction = ParameterDirection.Output}
                 };
 
                 int response = await _uow.ExecuteStoredProcReturnValue("SPRMDS_UPDATE_HISTORIA_CLINICA_AUDITORIA_ESTADO_VALIDACION_TIEMPO", parameters);

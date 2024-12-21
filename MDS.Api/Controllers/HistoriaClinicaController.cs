@@ -1388,11 +1388,11 @@ namespace MDS.Api.Controllers
 
             UpdateHistoriaClinicaAuditoriaEstadoValidacionTiempoDto dto = new UpdateHistoriaClinicaAuditoriaEstadoValidacionTiempoDto
             {
-                DHIS_FECLLEDR = model.DHIS_FECLLEDR,
-                DHIS_HRLLEDR = model.DHIS_HRLLEDR,
-                FHIS_FLG_CM_NUEVA = model.FHIS_FLG_CM_NUEVA,
-                NUMERO_HISTORIA = model.NUMERO_HISTORIA,
-                SHIS_CM_ESTADO = model.SHIS_CM_ESTADO
+                dhiS_FECLLEDR = model.dhiS_FECLLEDR,
+                dhiS_HRLLEDR = model.dhiS_HRLLEDR,
+                fhiS_FLG_CM_NUEVA = model.fhiS_FLG_CM_NUEVA,
+                numerO_HISTORIA = model.numerO_HISTORIA,
+                shiS_CM_ESTADO = model.shiS_CM_ESTADO
             };
 
             var response = await _historiaClinicaService.UpdateHistoriaClinicaAuditoriaEstadoValidacionTiempo(dto);

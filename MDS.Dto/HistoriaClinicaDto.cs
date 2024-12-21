@@ -1434,11 +1434,11 @@ namespace MDS.Dto
 
     public class UpdateHistoriaClinicaAuditoriaEstadoValidacionTiempoDto
     {
-        public int NUMERO_HISTORIA { get; set; }
-        public DateTime DHIS_HRLLEDR { get; set; }
-        public DateTime DHIS_FECLLEDR { get; set; }
-        public bool FHIS_FLG_CM_NUEVA { get; set; }
-        public string SHIS_CM_ESTADO { get; set; }
+        public int numerO_HISTORIA { get; set; }
+        public string dhiS_HRLLEDR { get; set; }
+        public string dhiS_FECLLEDR { get; set; }
+        public bool fhiS_FLG_CM_NUEVA { get; set; }
+        public string shiS_CM_ESTADO { get; set; }
     }
 
     public class HistoriaClinicaMadValidacionTiempoDto
