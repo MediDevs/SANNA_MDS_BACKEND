@@ -459,9 +459,9 @@ namespace MDS.Api.Controllers
 
                 usulla_ate = model.usulla_ate,
 
-                cod_emp = model.cod_emp,    
-                
-                flag_programada = model.flag_programada,    
+                cod_emp = model.cod_emp,
+
+                flag_programada = model.flag_programada,
 
                 f_soldoct = model.f_soldoct,
 
@@ -469,29 +469,29 @@ namespace MDS.Api.Controllers
 
                 observacion = model.observacion,
 
-                tar_ate = model.tar_ate,    
+                tar_ate = model.tar_ate,
 
                 cambio = model.cambio,
 
-                codtar_ate = model.codtar_ate,  
+                codtar_ate = model.codtar_ate,
 
-                ntar_ate = model.ntar_ate,  
+                ntar_ate = model.ntar_ate,
 
-                tarj_mc = model.tarj_mc,    
+                tarj_mc = model.tarj_mc,
 
-                fvenc_ate = model.fvenc_ate,    
+                fvenc_ate = model.fvenc_ate,
 
-                sin_ate = model.sin_ate,    
+                sin_ate = model.sin_ate,
 
                 contacto_pac = model.contacto_pac,
 
                 contacto_aseg = model.contacto_aseg,
 
-                cod_aut_prestacion  = model.cod_aut_prestacion,
+                cod_aut_prestacion = model.cod_aut_prestacion,
 
-                cod_asegurado   = model.cod_asegurado,
+                cod_asegurado = model.cod_asegurado,
 
-                cod_solgen  = model.cod_solgen,
+                cod_solgen = model.cod_solgen,
 
                 cm_aseg_producto = model.cm_aseg_producto,
 
@@ -501,7 +501,7 @@ namespace MDS.Api.Controllers
 
                 tipo_afiliacion = model.tipo_afiliacion,
 
-                id_paquete = model.id_paquete,  
+                id_paquete = model.id_paquete,
 
                 primera_consulta = model.primera_consulta,
 
@@ -511,7 +511,7 @@ namespace MDS.Api.Controllers
 
                 tipo_ate = model.tipo_ate,
 
-                tipo_doc_pago = model.tipo_doc_pago,    
+                tipo_doc_pago = model.tipo_doc_pago,
 
                 id_condicion_especial_pago = model.id_condicion_especial_pago,
 
@@ -1420,12 +1420,12 @@ namespace MDS.Api.Controllers
 
             AddHistoriaClinicaAuditoriaEstadoRecepcionMensajeDto dto = new AddHistoriaClinicaAuditoriaEstadoRecepcionMensajeDto
             {
-                ESTADO = model.ESTADO,
-                USUARIO_CREACION = model.USUARIO_CREACION,
-                CAMBIO = model.CAMBIO,
-                OBSERVACION = model.OBSERVACION,
-                NUMERO_HISTORIA = model.NUMERO_HISTORIA,
-                USUARIO = model.USUARIO
+                estado = model.estado,
+                usuariO_CREACION = model.usuariO_CREACION,
+                cambio = model.cambio,
+                observacion = model.observacion,
+                numerohistoria = model.numerohistoria,
+                usuario = model.usuario
             };
 
             var response = await _historiaClinicaService.AddHistoriaClinicaAuditoriaEstadoRecepcionMensaje(dto);
@@ -1478,19 +1478,19 @@ namespace MDS.Api.Controllers
         //6 - 7 (API 3)
         //By Henrry Torres
         [HttpPost, Route("AddHistoriaClinica_Mad_Auditoria_Confirmar_Llegada_Medico")]
-        public async Task<IActionResult> AddHistoriaClinicaMadAuditoriaConfirmarLlegadaMedico(AddHistoriaClinicaMadAuditoriaEstadoViewModel model)
+        public async Task<IActionResult> AddHistoriaClinicaMadAuditoriaConfirmarLlegadaMedico(AddHistoriaClinicaAuditoriaConfirmarLlegadaMedicoViewModel model)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelStateExtensions.GetErrorMessage(ModelState));
 
             HistoriaClinicaMadAuditoriaEstadoDto dto = new HistoriaClinicaMadAuditoriaEstadoDto
             {
-                ESTADO = model.ESTADO,
-                USUARIO_CREACION = model.USUARIO_CREACION,
-                CAMBIO = model.CAMBIO,
-                OBSERVACION = model.OBSERVACION,
-                NUMEROHISTORIA = model.NUMEROHISTORIA,
-                USUARIO = model.USUARIO
+                ESTADO = model.estado,
+                USUARIO_CREACION = model.usuariO_CREACION,
+                CAMBIO = model.cambio,
+                OBSERVACION = model.observacion,
+                NUMEROHISTORIA = model.numerohistoria,
+                USUARIO = model.usuario
             };
 
             var response = await _historiaClinicaService.AddHistoriaClinicaMadAuditoriaConfirmarLlegadaMedico(dto);
@@ -1501,19 +1501,18 @@ namespace MDS.Api.Controllers
         //6 - 7 (API 4)
         //By Henrry Torres
         [HttpPut, Route("UpdateHistoriaClinica_Mad_Auditoria_Confirmar_Llegada_Medico")]
-        public async Task<IActionResult> UpdateHistoriaClinicaMadAuditoriaConfirmarLlegadaMedico(AddHistoriaClinicaMadAuditoriaEstadoViewModel model)
+        public async Task<IActionResult> UpdateHistoriaClinicaMadAuditoriaConfirmarLlegadaMedico(UpdateHistoriaClinicaAuditoriaConfirmarLlegadaMedicoViewModel model)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelStateExtensions.GetErrorMessage(ModelState));
 
-            HistoriaClinicaMadAuditoriaEstadoDto dto = new HistoriaClinicaMadAuditoriaEstadoDto
+            HistoriaClinicaAuditoriaConfirmarLlegadaMedicoDto dto = new HistoriaClinicaAuditoriaConfirmarLlegadaMedicoDto
             {
-                ESTADO = model.ESTADO,
-                USUARIO_CREACION = model.USUARIO_CREACION,
-                CAMBIO = model.CAMBIO,
-                OBSERVACION = model.OBSERVACION,
-                NUMEROHISTORIA = model.NUMEROHISTORIA,
-                USUARIO = model.USUARIO
+                numerohistoria = model.numerohistoria,
+                cm_estado = model.cm_estado,
+                asig = model.asig,
+                orden = model.orden,
+                usuoplla_ate = model.usuoplla_ate
             };
 
             var response = await _historiaClinicaService.UpdateHistoriaClinicaMadAuditoriaConfirmarLlegadaMedico(dto);

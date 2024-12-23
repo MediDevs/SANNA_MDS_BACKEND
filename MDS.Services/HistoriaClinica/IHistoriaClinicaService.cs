@@ -221,7 +221,7 @@ namespace MDS.Services.HistoriaClinica
 
         //By Henrry Torres
         //6 - 7 (API 4)
-        Task<ServiceResponse> UpdateHistoriaClinicaMadAuditoriaConfirmarLlegadaMedico(HistoriaClinicaMadAuditoriaEstadoDto dto);
+        Task<ServiceResponse> UpdateHistoriaClinicaMadAuditoriaConfirmarLlegadaMedico(HistoriaClinicaAuditoriaConfirmarLlegadaMedicoDto dto);
 
         //ESTADO 7 - 8
         //By Henrry Torres

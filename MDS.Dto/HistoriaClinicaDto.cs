@@ -1466,12 +1466,12 @@ namespace MDS.Dto
     #region "Estados 5 - 6"
     public class AddHistoriaClinicaAuditoriaEstadoRecepcionMensajeDto
     {
-        public int NUMERO_HISTORIA { get; set; }
-        public string ESTADO { get; set; }
-        public string USUARIO { get; set; }
-        public string OBSERVACION { get; set; }
-        public string CAMBIO { get; set; }
-        public int USUARIO_CREACION { get; set; }
+        public int numerohistoria { get; set; }
+        public string estado { get; set; }
+        public string usuario { get; set; }
+        public string observacion { get; set; }
+        public string cambio { get; set; }
+        public int usuariO_CREACION { get; set; }
         public int onRespuesta { get; set; }
     }
 
@@ -1592,6 +1592,16 @@ namespace MDS.Dto
         public string direccion { get; set; }
         public string medico { get; set; }
         public string conductor { get; set; }
+    }
+
+    public class HistoriaClinicaAuditoriaConfirmarLlegadaMedicoDto
+    {
+        public int numerohistoria { get; set; }
+        public string cm_estado { get; set; }
+        public int asig { get; set; }
+        public int orden { get; set; }
+        public string usuoplla_ate { get; set; }
+        public int onRespuesta { get; set; }
     }
 
 }

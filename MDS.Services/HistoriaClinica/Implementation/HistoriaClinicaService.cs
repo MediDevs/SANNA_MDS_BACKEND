@@ -2344,7 +2344,7 @@ namespace MDS.Services.HistoriaClinica.Implementation
                     new SqlParameter("@SHIS_CM_COD_DR_ANTERIOR", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = dto.SHIS_CM_COD_DR_ANTERIOR },
                     new SqlParameter("@SHIS_CM_DR_ANTERIOR", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = dto.SHIS_CM_DR_ANTERIOR },
                     new SqlParameter("@FHIS_FLG_VALIDACION_DIRECTA", SqlDbType.Bit) {Direction = ParameterDirection.Input, Value = dto.FHIS_FLG_VALIDACION_DIRECTA },
-                    
+
                     new SqlParameter("@onRespuesta", SqlDbType.Int) {Direction = ParameterDirection.Output}
                 };
 
@@ -2439,7 +2439,7 @@ namespace MDS.Services.HistoriaClinica.Implementation
 
                 listHistoriasClinicas = historiasClinicas.Select(s => new HistoriaClinicaMadValidacionTiempoDto
                 {
-                    
+
                     numero_historia = s.CHIS_ID,
                     estado = s.SHIS_CM_ESTADO,
                     clasificacion_pac = s.NHIS_CLASIFICACION_PAC,
@@ -2455,7 +2455,7 @@ namespace MDS.Services.HistoriaClinica.Implementation
                     celular_medico = s.CELULAR_MEDICO,
                     celular_conductor = s.CELULAR_CONDUCTOR
 
-    }).ToList();
+                }).ToList();
 
                 if (!historiasClinicas.Any())
                     return ServiceResponse.ReturnResultWith204();
@@ -2511,7 +2511,7 @@ namespace MDS.Services.HistoriaClinica.Implementation
                     new SqlParameter("@DHIS_FECLLEDR", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = dto.dhiS_FECLLEDR },
                     new SqlParameter("@FHIS_FLG_CM_NUEVA", SqlDbType.Int) {Direction = ParameterDirection.Input, Value = dto.fhiS_FLG_CM_NUEVA },
                     new SqlParameter("@SHIS_CM_ESTADO", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = dto.shiS_CM_ESTADO },
-                    
+
                     new SqlParameter("@onRespuesta", SqlDbType.Int) {Direction = ParameterDirection.Output}
                 };
 
@@ -2577,12 +2577,12 @@ namespace MDS.Services.HistoriaClinica.Implementation
             {
                 SqlParameter[] parameters =
                 {
-                    new SqlParameter("@NUMERO_HISTORIA", SqlDbType.Int) {Direction = ParameterDirection.Input, Value = dto.NUMERO_HISTORIA },
-                    new SqlParameter("@ESTADO", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = dto.ESTADO,},
-                    new SqlParameter("@USUARIO", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = dto.USUARIO,},
-                    new SqlParameter("@OBSERVACION", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = dto.OBSERVACION,},
-                    new SqlParameter("@CAMBIO", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = dto.CAMBIO,},
-                    new SqlParameter("@USUARIO_CREACION", SqlDbType.Int) {Direction = ParameterDirection.Input, Value = dto.USUARIO_CREACION,},
+                    new SqlParameter("@NUMEROHISTORIA", SqlDbType.Int) {Direction = ParameterDirection.Input, Value = dto.numerohistoria },
+                    new SqlParameter("@ESTADO", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = dto.estado,},
+                    new SqlParameter("@USUARIO", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = dto.usuario,},
+                    new SqlParameter("@OBSERVACION", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = dto.observacion,},
+                    new SqlParameter("@CAMBIO", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = dto.cambio,},
+                    new SqlParameter("@USUARIO_CREACION", SqlDbType.Int) {Direction = ParameterDirection.Input, Value = dto.usuariO_CREACION,},
 
                     new SqlParameter("@onRespuesta", SqlDbType.Int) {Direction = ParameterDirection.Output}
                 };
@@ -2612,7 +2612,8 @@ namespace MDS.Services.HistoriaClinica.Implementation
                     new SqlParameter("@NUMERO_HISTORIA", SqlDbType.Int) {Direction = ParameterDirection.Input, Value = dto.NUMERO_HISTORIA },
                     new SqlParameter("@SHIS_CM_ESTADO", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = dto.SHIS_CM_ESTADO },
                     new SqlParameter("@NHIS_CM_ORDEN", SqlDbType.Int) {Direction = ParameterDirection.Input, Value = dto.NHIS_CM_ORDEN },
-                    //new SqlParameter("@onRespuestaSeguimiento", SqlDbType.Int) {Direction = ParameterDirection.Output}
+
+                    new SqlParameter("@onRespuesta", SqlDbType.Int) {Direction = ParameterDirection.Output}
                 };
 
                 int response = await _uow.ExecuteStoredProcReturnValue("SPRMDS_UPDATE_HISTORIA_CLINICA_AUDITORIA_ESTADO_RECEPCION_MENSAJE", parameters);
@@ -2743,18 +2744,17 @@ namespace MDS.Services.HistoriaClinica.Implementation
 
         //By Henrry Torres
         //6 - 7 (API 4)
-        public async Task<ServiceResponse> UpdateHistoriaClinicaMadAuditoriaConfirmarLlegadaMedico(HistoriaClinicaMadAuditoriaEstadoDto dto)
+        public async Task<ServiceResponse> UpdateHistoriaClinicaMadAuditoriaConfirmarLlegadaMedico(HistoriaClinicaAuditoriaConfirmarLlegadaMedicoDto dto)
         {
             try
             {
                 SqlParameter[] parameters =
                 {
-                    new SqlParameter("@NUMEROHISTORIA", SqlDbType.Int) {Direction = ParameterDirection.Input, Value = dto.NUMEROHISTORIA },
-                    new SqlParameter("@ESTADO", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = dto.ESTADO,},
-                    new SqlParameter("@USUARIO", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = dto.USUARIO,},
-                    new SqlParameter("@OBSERVACION", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = dto.OBSERVACION,},
-                    new SqlParameter("@CAMBIO", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = dto.CAMBIO,},
-                    new SqlParameter("@USUARIO_CREACION", SqlDbType.Int) {Direction = ParameterDirection.Input, Value = dto.USUARIO_CREACION,},
+                    new SqlParameter("NUMERO_HISTORIA", SqlDbType.Int) {Direction = ParameterDirection.Input, Value = dto.numerohistoria },
+                    new SqlParameter("SHIS_CM_ESTADO", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = dto.cm_estado},
+                    new SqlParameter("NHIS_COD_ASIG", SqlDbType.Int) {Direction = ParameterDirection.Input, Value = dto.asig},
+                    new SqlParameter("NHIS_CM_ORDEN", SqlDbType.Int) {Direction = ParameterDirection.Input, Value = dto.orden},
+                    new SqlParameter("SHIS_USUOPLLA_ATE", SqlDbType.VarChar) {Direction = ParameterDirection.Input, Value = dto.usuoplla_ate},
 
                     new SqlParameter("@onRespuesta", SqlDbType.Int) {Direction = ParameterDirection.Output}
                 };
